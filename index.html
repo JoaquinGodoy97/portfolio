@@ -29,13 +29,13 @@
           goals and objectives.
         </p>
 
-        <div class="row justify-content-md-start col-sm-6">
-          <div class="col-sm-6 pb-3">
-            <a href="https://drive.google.com/uc?export=download&id=1aIrtLuA6AxAkwvl4xMhmY7Zuo8yKuTy2" class="btn btn-dark btn-lg px-4">ENG Resume</a>
+        <div class="row justify-content-md-start col-sm-6 ">
+          <div class="col-sm-6 pb-3 ">
+            <a href="https://drive.google.com/uc?export=download&id=1aIrtLuA6AxAkwvl4xMhmY7Zuo8yKuTy2" class="btn btn-dark btn-sm px-4">ENG General Resume</a>
           </div>
   
           <div class="col-sm-6 pb-3">
-            <a href="https://drive.google.com/uc?export=download&id=1c7kdPOhOGn29VwwxaSkRvcTWcXsPLUTa" class="btn btn-dark btn-lg px-4">ESP Resume</a>
+            <a href="https://drive.google.com/uc?export=download&id=1c7kdPOhOGn29VwwxaSkRvcTWcXsPLUTa" class="btn btn-dark btn-sm px-4">ESP General Resume</a>
           </div>
   
         </div>
@@ -177,7 +177,11 @@
                 INTERMEDIATE JAVASCRIPT COURSE WEB DESIGN-ORIENTED
               </h4>
 
-              <img height="20" width="20" src="https://logodownload.org/wp-content/uploads/2022/04/javascript-logo-1.png" alt="" srcset="">
+              <a class="link-icon-expand" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Check out the online version of the cerfificate on PDF here." href="https://drive.google.com/file/d/1AMo-65-Atag7e-lyIMupVEZO-3PcJP2h/view?usp=sharing">
+                  <img height="20" width="20" src="https://logodownload.org/wp-content/uploads/2022/04/javascript-logo-1.png" alt="" srcset="">
+                </a>
 
             </div>
             
@@ -204,8 +208,12 @@
                 <h4>
                   INTERMIDIATE PYTHON COURSE
                 </h4>
-
-                <img height="20" width="20" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" alt="" srcset="">
+                
+                <a class="link-icon-expand" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Check out the online version of the cerfificate on PDF here." href="https://drive.google.com/file/d/1uMFC9GqcruwJpKlsM420yZPrDXjeosrI/view?usp=sharing">
+                  <img height="20" width="20" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" alt="" srcset="">
+                </a>
 
               </div>
 
@@ -237,12 +245,11 @@
 
             <ul class="list-group p-3">
 
-              <li>Front end and web skills</li>
-              <li>Designing Website with Bootstrap 4</li>
-              <li>Introduction to HTML5</li>
-              <li>GitHub Inicial Course</li>
-              <li>Introduction to Social Media. Objectives and Metrics.</li>
-              <li>EF SET Certificate 64/100 (C1 Advanced)</li>
+              <li><a target="_blank" href="https://www.coursera.org/account/accomplishments/certificate/KR7UKRJVBKQP">Designing Website with Bootstrap 4</a></li>
+              <li><a target="_blank" href="https://www.coursera.org/account/accomplishments/certificate/A5DR4LVU35ZN">Introduction to HTML5</a></li>
+              <li><a target="_blank" href="https://cdn.rocketcode.com.ar/upload_images/6e780864f7410f035e34a0865a2fe07d.pdf">GitHub Inicial Course</a></li>
+              <li><a target="_blank" href="https://www.coursera.org/account/accomplishments/certificate/68SSXM7GPE9L">Introduction to Social Media. Objectives and Metrics.</a></li>
+              <li><a target="_blank" href="https://www.efset.org/cert/T2Nu1i">EF SET Certificate 65/100 (C1 Advanced)</a></li>
  
             </ul>
           </div>
@@ -256,6 +263,7 @@
 
     <!-- MODAL NOT IN USE FOR THE TIME BEING -->
 
+    <!-- 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -264,7 +272,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <!-- main body -->
+            main body 
             <h2>hello world</h2>
           </div>
           <div class="modal-footer">
@@ -272,13 +280,16 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   
   <script>
+
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
     function getReadme(user, repo, project_slot) {
 
@@ -299,13 +310,32 @@
 
     
     var main_container = document.querySelector('.main-container');
-    var body = document.querySelector('.body');
+    // var body = document.querySelector('.body');
 
     window.addEventListener('scroll', function(){
       valueScrollY = window.scrollY;
       
       main_container.style.transform = `translateY(${1 - valueScrollY * 0.05 + "%"})`;
   
+      });
+
+      var shadow_boxes = document.querySelectorAll('.box-shadow');
+      
+      console.log(shadow_boxes[2])
+
+      const isHover = e => e.parentElement.querySelector(':hover') === e;
+
+      window.addEventListener('mouseover', function(){
+
+        for (var i = 0; i < shadow_boxes.length; i++){
+
+          if (hovered !== checkHover.hovered) {
+            var hovered = isHover(shadow_boxes[i]);
+            checkHover.hovered = hovered;
+            shadow_boxes[i].style.transform = 'scale(105%)';
+          }
+        }
+
       });
       
   </script>

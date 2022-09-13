@@ -13,6 +13,7 @@
 
 <body class="body">
 
+  <!-- TOP INFO, NAME PPROFILE AND DESCRIPTION -->
   <div class="col-lg-8 mx-auto p-2 py-md-4 main-container" style="overflow: hidden;">
 
       <div class="p-3 fonts box-shadow ">
@@ -42,8 +43,12 @@
   
       <hr class="col-2 mt-3 mb-3">
       
+      <!-- COLUMNS -->
+
       <div class="row fonts ">
-      
+
+      <!-- LEFT COLUMN / PROJECTS -->
+
         <div class="col-sm-6 ">
 
             <div class="box-shadow p-3 mb-3" >
@@ -98,8 +103,11 @@
 
         </div> 
 
+      <!-- RIGHT COLUMN / SKILLS, COURSES, CERTIFICATES -->
+
         <div class="col-sm-6 ">
 
+          <!-- SKILLS-->
           <div class="fonts box-shadow p-3 mb-3">
 
             <h2>Skills</h2>
@@ -159,6 +167,8 @@
             </ul>
           </div>
 
+
+          <!-- COURSES -->
           <div class="fonts box-shadow p-3 mb-3" style="background-color: rgb(204, 204, 204);">
 
             <div class="d-flex me-3 align-items-center">
@@ -213,6 +223,8 @@
             
           </div>
 
+          <!-- CERTIFICATES (LIST) -->
+
           <div class="fonts box-shadow p-3 mb-3" style="background-color: rgb(179, 218, 179);">
 
             <div class="d-flex me-3 align-items-center">
@@ -234,25 +246,10 @@
  
             </ul>
           </div>
+          
         </div>
+        
       </div>
-        
-
-        <!-- <div class="col-md-6 box-shadow">
-          
-
-        <div class="col-md-6 fonts">
-          
-        </div>
-
-        
-
-        <div class="col-md-6 fonts">
-
-        </div>
-
-        
-      -->
 
       </div> 
 
@@ -307,25 +304,10 @@
     window.addEventListener('scroll', function(){
       valueScrollY = window.scrollY;
       
-      // let fontBg = document.querySelector('#ff-bg-selector');
-      // let homeCard = document.querySelector('#home-card');
-      // let programmingImg = document.querySelector('#programming-img')
-      
-      // main_container.style.transform = `translateY(${valueScrollY * -.1 + "px"})`;
-      main_container.style.transform = `translateY(${0.5 - valueScrollY * 0.05 + "%"})`;
-
-      // let logo = document.querySelector('#logo');
-      
-      // function gradualOpacity(element, opacity){
-      
-      // function gradualFading(element, height){
-      //     let scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      //     element.style.opacity = Math.max(0, Math.min(1, -scroll / height + 2))
-      // }
+      main_container.style.transform = `translateY(${1 - valueScrollY * 0.05 + "%"})`;
+  
       });
       
-
-
   </script>
 </body>
 

@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
-app.get('api/repos', async (req, res) => {
+app.get('/api/repos', async (req, res) => {
     try{
         const repoData = await fetchRepoData();
         res.json(repoData);

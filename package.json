@@ -1,0 +1,14 @@
+{
+  "name": "porfolio",
+  "version": "1.0.0",
+  "main": "./server/server.mjs",
+  "type": "module",
+  "repository": "https://github.com/JoaquinGodoy97/porfolio.git",
+  "author": "Joaquin Godoy <godoy.joaquin1997@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.21.1",
+    "playwright": "^1.48.2"
+  }
+}

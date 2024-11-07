@@ -3,6 +3,6 @@
 --------------------------------------------
 ## Techs
 
-Node.js
-Javascript
-Boostrap
+• Node.js
+• Javascript
+• Boostrap

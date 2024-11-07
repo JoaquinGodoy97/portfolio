@@ -149,20 +149,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         getReadme(user, repo.repoName, index)
     }
 
-    var main_container = document.querySelector('.main-container');
+    // var main_container = document.querySelector('.main-container');
 
     const backToTopBtn = document.getElementById("backToTopBtn");
 
     // var body = document.querySelector('.body');
-    document.body.addEventListener('scroll', function () {
-        // valueScrollY = window.scrollY;
+    window.addEventListener('scroll', function () {
+        const valueScrollY = window.scrollY;
         // main_container.style.transform = `translateY(${1 - valueScrollY * 0.05 + "%"})`;
 
-        // console.log(document.body.scrollTop, "Scroll Top")
-        // console.log(document.body.scrollY, "Scroll Y")
-        // console.log(window.pageYOffset, "page offset")
-
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        if (valueScrollY > 20 || document.documentElement.scrollTop > 20) {
             backToTopBtn.style.display = "block";
         } else {
             backToTopBtn.style.display = "none";
@@ -172,13 +168,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     // When the user clicks on the button, scroll to the top of the document
     backToTopBtn.addEventListener("click", function() {
         // document.body.scrollTop = 0; // For Safari
-        document.body.scrollTo({ top: 0, behavior: 'smooth' });
-        backToTopBtn.style.display = "none";
+        const scrollToTop = () => {
+            const c = document.documentElement.scrollTop || document.body.scrollTop;
+            if (c > 0) {
+                window.requestAnimationFrame(scrollToTop);
+                window.scrollTo(0, c - c / 8);
+            }
+        };
+        scrollToTop();
+        
+        this.style.display = "none";
     });
 
     const selectLanguageBtn = document.querySelector('.select-language')
     selectLanguageBtn.addEventListener('click', function (){
-        selectLanguageBtn.innerHTML = selectLanguageBtn.innerHTML !== 'ENG' ? 'ENG' : 'ESP';
+        this.innerHTML = selectLanguageBtn.innerHTML !== 'ENG' ? 'ENG' : 'ESP';
 
     })
 

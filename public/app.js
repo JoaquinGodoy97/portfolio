@@ -54,23 +54,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         skillsContainer.appendChild(progressList);
     }
 
-    // Get the button
-
-
-    // // When the user scrolls down 20px from the top of the document, show the button
-    // window.onscroll = function() {scrollFunction()};
-
-    // function scrollFunction() {
-
-    // }
-
-
-
-
     //template for div creation in <!-- LEFT COLUMN / PROJECTS --> class = project-list
-    {/* <div class="box-shadow p-3 mb-3">
-
-    <h4>CRUD</h4>
+    {/* TEMPLATE
 
     <div class="box-shadow p-3 mb-3">
 
@@ -153,18 +138,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (e.target.classList.contains('project-anchor')) {
 
             let repoName = e.target.innerHTML
-            element = document.querySelector(`${e.target.innerHTML}-content-box`)
+            console.log(repoName, 'reponame name e target innerhtml')
+            const element = document.querySelector(`.${e.target.innerHTML}-content-box`)
 
             const techsContainer = document.createElement('div')
             techsContainer.classList.add('techs-container')
+            element.appendChild(techsContainer)
 
             getTechnologies(repoName, techsContainer);
         }
     })
 
-    function getTechnologies(repoName, container){
+    async function getTechnologies(repoName, container){
 
+        const response = await fetch('/api/repos');
+        const repoData = await response.json();
         
+        console.log(repoData)
     }
 
     // var main_container = document.querySelector('.main-container');

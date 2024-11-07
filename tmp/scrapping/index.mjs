@@ -31,12 +31,10 @@ export async function getRepoList() {
                 return language
                 }
             );
-
-
         })
 
         // console.log(`Repository: ${repo.repoName}, Languages:`, languageProgress);
-
+        
         await repositoryPage.close();
         repoListExport.push({repoName: repo.repoName, languages: languageProgress})
     }

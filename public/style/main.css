@@ -54,3 +54,26 @@ body::before{
     transform: scale(120%);
     transition: transform 1s;
 }
+
+
+/* button back to top */
+
+#backToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    bottom: 20px; /* Position from the bottom */
+    right: 30px; /* Position from the right */
+    z-index: 99; /* Ensure it stays on top */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #000; /* Background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    padding: 15px; /* Padding */
+    border-radius: 10px; /* Rounded corners */
+    background-color: aqua;
+}
+
+#backToTopBtn:hover {
+    background-color: #555; /* Darker background on hover */
+}

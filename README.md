@@ -5,4 +5,4 @@
 
 • Node.js
 • Javascript
-• Boostrap
+• Bootstrap

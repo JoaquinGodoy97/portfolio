@@ -145,16 +145,34 @@ document.addEventListener('DOMContentLoaded', async () => {
             techsContainer.classList.add('techs-container')
             element.appendChild(techsContainer)
 
-            getTechnologies(repoName, techsContainer);
+            const index = e.target.id.split('_')[0][7]
+
+            getTechnologies(repoName, techsContainer, index);
         }
     })
 
-    async function getTechnologies(repoName, container){
+    async function getTechnologies(repoName, container, index){
 
-        const response = await fetch('/api/repos');
-        const repoData = await response.json();
+        // const response = await fetch('/api/repos');
+        // const repoData = await response.json();
         
-        console.log(repoData)
+        // console.log(repoData)
+        const readmeFile = document.getElementById(`readme-text${index}`)
+        const element = readmeFile.innerHTML.split("## Techs")
+        const techList = element[element.length - 1].split("\n•")
+
+        console.log(techList)
+
+        for (let tech of techList){ 
+
+            if (tech !== "\n" && tech){
+                let imageElement = document.createElement('img')
+                imageElement.classList.add('tech-item-img')
+                imageElement.setAttribute('alt', tech)
+                imageElement.setAttribute('src', `style/icons/${tech.toLowerCase().trim()}.png`)
+                container.appendChild(imageElement)
+            }
+        }
     }
 
     // var main_container = document.querySelector('.main-container');

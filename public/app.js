@@ -55,16 +55,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Get the button
-    
+
 
     // // When the user scrolls down 20px from the top of the document, show the button
     // window.onscroll = function() {scrollFunction()};
 
     // function scrollFunction() {
-        
+
     // }
 
-    
+
 
 
     //template for div creation in <!-- LEFT COLUMN / PROJECTS --> class = project-list
@@ -89,17 +89,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
 
     </div> */}
+    const projectListDiv = document.querySelector('.project-list');
 
-    
-    function addProjectTemplate(user, repo, index){
+    function addProjectTemplate(user, repo, index) {
 
         console.log(repo)
 
-        const projectListDiv = document.querySelector('.project-list');
-
         // Outer elements
         const projectBox = document.createElement('div');
-        projectBox.classList.add('box-shadow', 'p-3', 'mb-3');
+        projectBox.classList.add('box-shadow', 'p-3', 'mb-3', 'project-box', `${repo.repoName}-content-box`);
 
         // Title n description elements
         const projectTitle = document.createElement('h2');
@@ -124,6 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         projectAnchor.setAttribute('href', repo.repoUrl)
         projectAnchor.setAttribute('rel', "noopener")
         projectAnchor.setAttribute('id', `project${index}_git_name`)
+        projectAnchor.setAttribute('class', 'project-anchor')
         projectAnchor.setAttribute('target', '_blank')
         projectAnchor.innerHTML = repo.repoName || 'proyect missing...'
         projectLinkWrapper.appendChild(projectAnchor)
@@ -149,6 +148,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         getReadme(user, repo.repoName, index)
     }
 
+
+    projectListDiv.addEventListener('mouseover', function (e) {
+        if (e.target.classList.contains('project-anchor')) {
+
+            let repoName = e.target.innerHTML
+            element = document.querySelector(`${e.target.innerHTML}-content-box`)
+
+            const techsContainer = document.createElement('div')
+            techsContainer.classList.add('techs-container')
+
+            getTechnologies(repoName, techsContainer);
+        }
+    })
+
+    function getTechnologies(repoName, container){
+
+        
+    }
+
     // var main_container = document.querySelector('.main-container');
 
     const backToTopBtn = document.getElementById("backToTopBtn");
@@ -166,7 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     // When the user clicks on the button, scroll to the top of the document
-    backToTopBtn.addEventListener("click", function() {
+    backToTopBtn.addEventListener("click", function () {
         // document.body.scrollTop = 0; // For Safari
         const scrollToTop = () => {
             const c = document.documentElement.scrollTop || document.body.scrollTop;
@@ -176,36 +194,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         };
         scrollToTop();
-        
+
         this.style.display = "none";
     });
 
-    const selectLanguageBtn = document.querySelector('.select-language')
-    selectLanguageBtn.addEventListener('click', function (){
-        this.innerHTML = selectLanguageBtn.innerHTML !== 'ENG' ? 'ENG' : 'ESP';
+    const selectLanguageBtn = document.querySelector('.select-language-btn')
+    selectLanguageBtn.addEventListener('click', function () {
+        // this.innerHTML = selectLanguageBtn.innerHTML !== 'ENG' ? 'ENG' : 'ESP';
 
     })
-
-    // var shadow_boxes = document.querySelectorAll('.box-shadow'); 
-
-    // console.log(shadow_boxes[2])
-
-    // const isHover = e => e.parentElement.querySelector(':hover') === e;
-
-    // window.addEventListener('mouseover', function () {
-    //     let checkHover = {};
-    //     for (var i = 0; i < shadow_boxes.length; i++) {
-    //         var hovered = isHover(shadow_boxes[i]);
-
-    //         if (hovered !== checkHover.hovered) {
-    //             var hovered = isHover(shadow_boxes[i]);
-    //             checkHover.hovered = hovered;
-    //             shadow_boxes[i].style.transform = 'scale(101%)';
-    //         } else {
-    //             shadow_boxes[i].style.transform = 'scale(100%)';
-    //         }
-    //     }
-    // });
 
     async function getReadme(user, repoName, project_slot) {
 
@@ -219,29 +216,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         projectElement.innerHTML = result
         projectSlot.innerHTML = repoName
 
-        // if (!projectElement && projectSlot) {
-        //     addProjectTemplate(project_slot)
-
-        //     
-        // }
-        
-        // <li class="d-flex align-items-start mb-1"><a href="https://github.com/JoaquinGodoy97/movie-app-flask"
-        //         rel="noopener" target="_blank" id="project1_git_name">proyect missing.</a></li>
-        //     <li class="text-muted d-flex align-items-start mb-1 project-language">
-        //       # Flask, python
-        //     </li>
-        //     <pre id="readme-text1">hola</pre>
-
-        // if (element) {
-        //     element.innerHTML = result;
-        //     element.innerHTML = repo;
-
-        //     console.log(element)
-        // } 
-        // else {
-        //     console.error(`Element with id repo${project_slot} not found`);
-        // }
-        
     }
 
     const gitUser = 'JoaquinGodoy97'
@@ -277,28 +251,32 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log(listOfLan, "This is the list with languages")
 
         function sumRepeated(list) {
-            const combinedPercentages = list.reduce((acc, { language, percentage }) => {
+            // Step 1: Accumulate percentages and counts 
+            const accumulatedData = list.reduce((acc, { language, percentage }) => {
                 if (acc[language]) {
-                    acc[language] += percentage;
+                    acc[language].totalPercentage += percentage;
+                    acc[language].count += 1;
                 } else {
-                    acc[language] = percentage;
-                }
-                return acc;
-            }, {});
-            const finalList = Object.keys(combinedPercentages).map(language => ({
-                language, percentage: combinedPercentages[language].toFixed(1)
+                    acc[language] = {
+                        totalPercentage: percentage, count: 1
+                    };
+                } return acc;
+            }, {}); 
+            // Step 2: Calculate averages 
+            const finalList = Object.keys(accumulatedData).map(language => ({
+                language, percentage: (accumulatedData[language].totalPercentage / accumulatedData[language].count).toFixed(1)
             }));
 
             return finalList
         }
 
-        const showReadme = () => { 
-            if (!Array.isArray(repoData.repoDetails)) { 
-                console.error('repoDetails is not an array'); 
-                return; 
-            } repoData.repoDetails.forEach((repo, index) => { 
-                addProjectTemplate(gitUser, repo, index); 
-            }); 
+        const showReadme = () => {
+            if (!Array.isArray(repoData.repoDetails)) {
+                console.error('repoDetails is not an array');
+                return;
+            } repoData.repoDetails.forEach((repo, index) => {
+                addProjectTemplate(gitUser, repo, index);
+            });
         };
 
         showReadme();
@@ -308,7 +286,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
 
-    
+
 
 });
 

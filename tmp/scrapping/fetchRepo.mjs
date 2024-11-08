@@ -4,13 +4,21 @@ export async function getRepoList() {
     const username = 'JoaquinGodoy97';
     const reposUrl = `https://api.github.com/users/${username}/repos`;
     const response = await fetch(reposUrl);
+
+    // Check if the response is OK
+    if (!response.ok) {
+        throw new Error('Failed to fetch repos');
+    }
+
     const repos = await response.json();
+    console.log('Fetched repos:', repos); 
 
     const repoListExport = await Promise.all(
         repos.map(async (repo) => {
             // Fetch the languages for each repository using the languages_url
             const languagesResponse = await fetch(repo.languages_url);
             const languagesData = await languagesResponse.json();
+
 
             return {
                 repoName: repo.name,

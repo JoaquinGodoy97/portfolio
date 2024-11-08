@@ -1,7 +1,6 @@
-// import express from 'express';
+import express from 'express';
 import { fetchRepoData } from '../services/useRepoList.mjs'
 
-const express = require('express')
 const serverless = require('serverless-http')
 
 const app = express();

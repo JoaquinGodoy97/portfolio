@@ -1,5 +1,6 @@
 import express from 'express';
-import { fetchRepoData } from '../services/useRepoList.mjs'
+// import { fetchRepoData } from '../services/useRepoList.mjs'
+import { getRepoList } from '../tmp/scrapping/fetchRepo.mjs'
 import serverless from 'serverless-http';
 
 const app = express();
@@ -9,7 +10,7 @@ app.use(express.static('public'));
 
 app.get('/api/repos', async (req, res) => {
     try{
-        const repoData = await fetchRepoData();
+        const repoData = await getRepoList();
         res.json(repoData);
     } catch (err) {
         res.status(500).send(err.message)

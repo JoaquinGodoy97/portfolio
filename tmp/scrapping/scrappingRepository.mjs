@@ -3,38 +3,31 @@ import fetch from 'node-fetch';
 export async function getRepoList() {
     const username = 'JoaquinGodoy97';
     const reposUrl = `https://api.github.com/users/${username}/repos`;
-    // const response = await fetch(reposUrl);
-    // const repos = await response.json();
+    const response = await fetch(reposUrl, {
+        headers: {
+            'Authorization': `token ${process.env.GITHUB_TOKEN}`
+        }
+    });
+    const repos = await response.json();
 
-    try {
-        const response = await fetch(reposUrl);
-        const repos = await response.json();
+    const repoListExport = await Promise.all(
+        repos.map(async (repo) => {
+            // Fetch the languages for each repository using the languages_url
+            const languagesResponse = await fetch(repo.languages_url);
+            const languagesData = await languagesResponse.json();
 
-        console.log('Fetched repositories:', repos);
-        return { repoList: repos };
-    } catch (error) {
-        console.error('Error fetching repo data:', error);
-        throw error;
-    }
-
-    // const repoListExport = await Promise.all(
-    //     repos.map(async (repo) => {
-    //         // Fetch the languages for each repository using the languages_url
-    //         const languagesResponse = await fetch(repo.languages_url);
-    //         const languagesData = await languagesResponse.json();
-
-    //         return {
-    //             repoName: repo.name,
-    //             repoUrl: repo.html_url,
-    //             description: repo.description || 'No description',
-    //             whenUpdated: repo.updated_at,
-    //             languages: languagesData,
-    //         }
-    //     })
-    // )
+            return {
+                repoName: repo.name,
+                repoUrl: repo.html_url,
+                description: repo.description || 'No description',
+                whenUpdated: repo.updated_at,
+                languages: languagesData,
+            }
+        })
+    )
     
-    // // You could fetch languages for each repo as a separate API call if needed
-    // return {
-    //     repoList: repoListExport,
-    // };
+    // You could fetch languages for each repo as a separate API call if needed
+    return {
+        repoList: repoListExport,
+    };
 }

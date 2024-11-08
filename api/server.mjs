@@ -16,7 +16,7 @@ app.get('/api/repos', async (req, res) => {
     }
 })
 
-export default serverless(app);
+export const handler = serverless(app)
 
 // if (process.env.NODE_ENV !== 'production') { 
 //     app.listen(PORT, () => { 

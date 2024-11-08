@@ -13,15 +13,15 @@ export async function getRepoList() {
     const repoListExport = await Promise.all(
         repos.map(async (repo) => {
             // Fetch the languages for each repository using the languages_url
-            const languagesResponse = await fetch(repo.languages_url);
-            const languagesData = await languagesResponse.json();
+            // const languagesResponse = await fetch(repo.languages_url);
+            // const languagesData = await languagesResponse.json();
 
             return {
                 repoName: repo.name,
                 repoUrl: repo.html_url,
                 description: repo.description || 'No description',
                 whenUpdated: repo.updated_at,
-                languages: languagesData,
+                // languages: languagesData,
             }
         })
     )

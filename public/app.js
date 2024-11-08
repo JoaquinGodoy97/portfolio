@@ -138,40 +138,44 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (e.target.classList.contains('project-anchor')) {
 
             let repoName = e.target.innerHTML
-            console.log(repoName, 'reponame name e target innerhtml')
             const element = document.querySelector(`.${e.target.innerHTML}-content-box`)
 
-            const techsContainer = document.createElement('div')
-            techsContainer.classList.add('techs-container')
-            element.appendChild(techsContainer)
-
+            let techsContainer = element.querySelector('.techs-container');
+            if (!techsContainer) {
+                techsContainer = document.createElement('div');
+                techsContainer.classList.add('techs-container'); 
+                element.appendChild(techsContainer)
+            }
             const index = e.target.id.split('_')[0][7]
 
-            getTechnologies(repoName, techsContainer, index);
+            if (techsContainer.children.length < 1) {
+                getTechnologies(repoName, techsContainer, index);
+            }
+
         }
     })
 
     async function getTechnologies(repoName, container, index){
 
-        // const response = await fetch('/api/repos');
-        // const repoData = await response.json();
-        
-        // console.log(repoData)
         const readmeFile = document.getElementById(`readme-text${index}`)
-        const element = readmeFile.innerHTML.split("## Techs")
-        const techList = element[element.length - 1].split("\n•")
 
-        console.log(techList)
+        if (readmeFile.innerHTML.includes('## Techs')) {
+            const element = readmeFile.innerHTML.split("## Techs")
+            const techList = element[element.length - 1].split("\n•")
 
-        for (let tech of techList){ 
-
-            if (tech !== "\n" && tech){
-                let imageElement = document.createElement('img')
-                imageElement.classList.add('tech-item-img')
-                imageElement.setAttribute('alt', tech)
-                imageElement.setAttribute('src', `style/icons/${tech.toLowerCase().trim()}.png`)
-                container.appendChild(imageElement)
-            }
+            techList.forEach((tech, i) => {
+                if (tech !== "\n" && tech){
+                    let imageElement = document.createElement('img')
+                    imageElement.classList.add('tech-item-img')
+                    imageElement.setAttribute('alt', tech)
+                    imageElement.setAttribute('src', `style/icons/${tech.toLowerCase().trim()}.png`)
+                    container.appendChild(imageElement)
+    
+                    // Trigger the transition 
+                    setTimeout(() => { imageElement.classList.add('visible');
+                    }, i * 100);
+                }
+            })
         }
     }
 

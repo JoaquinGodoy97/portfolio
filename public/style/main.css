@@ -198,3 +198,20 @@ color: white;
 .btn3:hover .git {
 fill: white;
 }
+
+
+/* technologies  list*/
+.tech-item-img{
+    opacity: 0;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    transform: translateX(10%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Style to be applied when they are visible */
+.tech-item-img.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -1,12 +1,12 @@
 {   
     "functions": {
-        "api/server.mjs": {
+        "/api/server.mjs": {
         "maxDuration": 20
         }
     },
     "routes": [
         {
-            "src": "/(.*)",
+            "src": "/api/(.*)",
             "dest": "/api/server.mjs"
         },
         {

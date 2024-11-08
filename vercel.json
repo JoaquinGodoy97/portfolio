@@ -1,4 +1,10 @@
 {   
+    "functions": {
+        "api/server.mjs": {
+        "runtime": "nodejs18.x",
+        "maxDuration": 20
+        }
+    },
     "routes": [
         {
             "src": "/api/(.*)",

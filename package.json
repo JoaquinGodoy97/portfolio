@@ -4,8 +4,7 @@
   "main": "api/server.mjs",
   "type": "module",
   "scripts": {
-    "start": "node api/server.mjs",
-    "build": "yarn install && yarn build"
+    "start": "node api/server.mjs"
   },
   "repository": "https://github.com/JoaquinGodoy97/porfolio.git",
   "author": "Joaquin Godoy <godoy.joaquin1997@gmail.com>",

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "./server/server.mjs",
   "type": "module",
-  "scripts": { 
-    "start": "node server/server.mjs" 
+  "scripts": {
+    "start": "node server/server.mjs"
   },
   "repository": "https://github.com/JoaquinGodoy97/porfolio.git",
   "author": "Joaquin Godoy <godoy.joaquin1997@gmail.com>",
@@ -12,6 +12,10 @@
   "private": false,
   "dependencies": {
     "express": "^4.21.1",
-    "playwright": "^1.48.2"
+    "playwright": "^1.48.2",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0"
   }
 }

@@ -3,8 +3,8 @@ import fetch from 'node-fetch';
 export async function getRepoList() {
     const username = 'JoaquinGodoy97';
     const reposUrl = `https://api.github.com/users/${username}/repos`;
-    const response = await fetch(reposUrl);
-    const repos = await response.json();
+    // const response = await fetch(reposUrl);
+    // const repos = await response.json();
 
     try {
         const response = await fetch(reposUrl);

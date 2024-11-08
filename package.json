@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "./server/server.mjs",
   "type": "module",
+  "scripts": { 
+    "start": "node server/server.mjs" 
+  },
   "repository": "https://github.com/JoaquinGodoy97/porfolio.git",
   "author": "Joaquin Godoy <godoy.joaquin1997@gmail.com>",
   "license": "MIT",

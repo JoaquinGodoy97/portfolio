@@ -1,8 +1,0 @@
-[build]
-  publish = "public"
-  functions = "server"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

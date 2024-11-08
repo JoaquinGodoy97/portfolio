@@ -3,7 +3,7 @@ import { fetchRepoData } from '../services/useRepoList.mjs'
 import serverless from 'serverless-http';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
@@ -16,9 +16,9 @@ app.get('/api/repos', async (req, res) => {
     }
 })
 
-export const handler = serverless(app)
+export default serverless(app);
 
-// if (process.env.NODE_ENV !== 'development') { 
+// if (process.env.NODE_ENV !== 'production') { 
 //     app.listen(PORT, () => { 
 //         console.log(`Server running on http://localhost:${PORT}`); 
 //     }); 

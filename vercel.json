@@ -1,6 +1,6 @@
 {   
     "functions": {
-        "/api/server.mjs": {
+        "api/server.mjs": {
         "maxDuration": 20
         }
     },

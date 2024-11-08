@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch('/api/repos');
         const repoData = await response.json();
 
-        console.log(repoData)
+        console.log('Checking Data on app.js:', repoData)
         if (!response.ok) {
             throw new Error(`HTTP ERROR ${response.status}`)
         }

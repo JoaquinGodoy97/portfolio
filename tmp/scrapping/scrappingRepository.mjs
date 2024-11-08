@@ -3,11 +3,7 @@ import fetch from 'node-fetch';
 export async function getRepoList() {
     const username = 'JoaquinGodoy97';
     const reposUrl = `https://api.github.com/users/${username}/repos`;
-    const response = await fetch(reposUrl, {
-        headers: {
-            'Authorization': `token ${process.env.GITHUB_TOKEN}`
-        }
-    });
+    const response = await fetch(reposUrl);
     const repos = await response.json();
 
     const repoListExport = await Promise.all(

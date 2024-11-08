@@ -121,8 +121,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // projectItemList.appendChild(projectLanguage)
 
         // Updated date
+        const date = new Date(repo.whenUpdated)
         const projectLastUpdate = document.createElement('li')
-        projectLastUpdate.innerHTML = `Last time updated: ${repo.whenUpdated}`
+        projectLastUpdate.innerHTML = `Last time updated: ${date.toDateString()}`
         projectItemList.appendChild(projectLastUpdate)
 
         // Readme text
@@ -274,6 +275,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch('/api/repos');
         const repoData = await response.json();
 
+        console.log(repoData)
         if (!response.ok) {
             throw new Error(`HTTP ERROR ${response.status}`)
         }
@@ -281,14 +283,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         const listOfLan = []
 
         for (const repo of repoData.repoList) {
-            for (const lan of repo.languages) {
+
+            console.log(repo)
+            const total = Object.values(repo.languages).reduce((acc, val) => acc + val, 0);
+
+            for (const [lan, value] of Object.entries(repo.languages)) {
                 if (lan !== null) {
-                    let lanProps = lan.split(" ");
-                    if (parseFloat(lanProps[1]) > 1){
-                        console.log(lanProps[1])
+                    // let lanProps = lan.split(" ");
+                    const percentage = (parseFloat(value) / total) * 100;
+                    if (percentage > 1){
+                    //     console.log(lanProps[1])
                         let lanPropsObj = {
-                            language: lanProps[0],
-                            percentage: parseFloat(lanProps[1])
+                            language: lan,
+                            percentage: percentage
                         }
                         listOfLan.push(lanPropsObj)
                     }
@@ -326,10 +333,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         const showReadme = () => {
-            if (!Array.isArray(repoData.repoDetails)) {
+            if (!Array.isArray(repoData.repoList)) {
                 console.error('repoDetails is not an array');
                 return;
-            } repoData.repoDetails.forEach((repo, index) => {
+            } repoData.repoList.forEach((repo, index) => {
                 addProjectTemplate(gitUser, repo, index);
             });
         };

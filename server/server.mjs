@@ -1,7 +1,6 @@
 import express from 'express';
 import { fetchRepoData } from '../services/useRepoList.mjs'
-
-const serverless = require('serverless-http')
+import serverless from 'serverless-http';
 
 const app = express();
 const PORT = process.env.PORT || 3000;

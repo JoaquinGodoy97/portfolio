@@ -1,24 +1,4 @@
 
-// const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-// const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
-// function getReadme(user, repo, project_slot) {
-
-//     project_slot = String(project_slot)
-
-//     fetch(`https://raw.githubusercontent.com/${user}/${repo}/main/README.md`) // Fetch the file from GitHub's api
-//         .then(response => response.text())
-//         .then(result => document.getElementById(`readme-text${project_slot}`).innerHTML = result);
-
-//     document.getElementById(`project${project_slot}_git_name`).innerHTML = repo;
-
-// }
-
-// getReadme("JoaquinGodoy97", "movie-app-flask", 1)
-// getReadme("JoaquinGodoy97", "flask-crud-introduction", 2)
-// getReadme("JoaquinGodoy97", "gallery-img", 3)
-// getReadme("JoaquinGodoy97", "weather-app-js", 4)
-
 
 // public/app.js
 document.addEventListener('DOMContentLoaded', async () => {
@@ -54,39 +34,51 @@ document.addEventListener('DOMContentLoaded', async () => {
         skillsContainer.appendChild(progressList);
     }
 
-    //template for div creation in <!-- LEFT COLUMN / PROJECTS --> class = project-list
-    {/* TEMPLATE
+    // Function to create the SVG element
+    function createSVG() {
+        const svgNS = "http://www.w3.org/2000/svg"; 
+        const svg = document.createElementNS(svgNS, "svg");
+        svg.setAttribute("xmlns", svgNS);
+        svg.setAttribute("width", "16");
+        svg.setAttribute("height", "16");
+        svg.setAttribute("fill", "currentColor");
+        svg.setAttribute("class", "bi bi-hand-index-thumb pointer-project");
+        svg.setAttribute("viewBox", "0 0 16 16");
 
-    <div class="box-shadow p-3 mb-3">
+        const path = document.createElementNS(svgNS, "path");
+        path.setAttribute("d", "M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1M8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5 5 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.6 2.6 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046zm2.094 2.025");
 
-        <h2 class="project-title">Movie-app project</h2>
-        <p class="project-description">Ready to beyond the starter template? Check out these open source projects that
-        you can quickly duplicate to a new GitHub repository.</p>
-        <ul class="icon-list ps-0">
-            <li class="d-flex align-items-start mb-1"><a href="https://github.com/JoaquinGodoy97/movie-app-flask"
-                rel="noopener" target="_blank" id="project1_git_name">proyect missing.</a></li>
-            <li class="text-muted d-flex align-items-start mb-1 project-language">
-                # Flask, python
-            </li>
-            <pre id="readme-text1">hola</pre>
-        </ul>
+        svg.appendChild(path);
+        return svg;
+    }
 
-        </div>
+    // Function to append the SVG to project anchors
+    function addSVGToAnchors() {
+        const anchorDiv = document.querySelectorAll('.anchor-project-container')
+        anchorDiv.forEach(anchor => {
+            const svg = createSVG();
+            anchor.appendChild(svg); // Appending the SVG next to the anchor text
+        });
+    }
 
-    </div> */}
     const projectListDiv = document.querySelector('.project-list');
 
     function addProjectTemplate(user, repo, index) {
 
-        console.log(repo)
+        const projectListDiv = document.querySelector('.project-list');
+        if (!projectListDiv) {
+            console.error('ProjectListDiv not found')
+            return;
+        }
 
         // Outer elements
         const projectBox = document.createElement('div');
         projectBox.classList.add('box-shadow', 'p-3', 'mb-3', 'project-box', `${repo.repoName}-content-box`);
 
         // Title n description elements
-        const projectTitle = document.createElement('h2');
+        const projectTitle = document.createElement('h4');
         projectTitle.classList.add('project-title');
+        projectTitle.innerHTML = repo.repoName
         projectBox.appendChild(projectTitle)
         const projectDescription = document.createElement('p');
         projectDescription.classList.add('project-description');
@@ -97,26 +89,36 @@ document.addEventListener('DOMContentLoaded', async () => {
         const projectItemList = document.createElement('ul')
         projectItemList.classList.add('icon-list', 'ps-0')
         projectBox.appendChild(projectItemList)
+        console.log('projectItemList created and appended:', projectItemList);
 
         // Link wrapper and link
         const projectLinkWrapper = document.createElement('li')
         projectLinkWrapper.classList.add('d-flex', 'align-items-start', 'mb-1', 'link-wrapper')
         projectItemList.appendChild(projectLinkWrapper)
+        console.log('projectLinkWrapper created and appended:', projectLinkWrapper);
+        
+        const anchorDiv = document.createElement('div')
+        anchorDiv.classList.add('anchor-project-container')
+        projectLinkWrapper.appendChild(anchorDiv)
+        console.log('anchorDiv created and appended:', anchorDiv);
 
         const projectAnchor = document.createElement('a')
-        projectAnchor.setAttribute('href', repo.repoUrl)
-        projectAnchor.setAttribute('rel', "noopener")
+        projectAnchor.setAttribute('href', repo.repoUrl || '#')
+        projectAnchor.setAttribute('rel', 'noopener')
         projectAnchor.setAttribute('id', `project${index}_git_name`)
         projectAnchor.setAttribute('class', 'project-anchor')
         projectAnchor.setAttribute('target', '_blank')
-        projectAnchor.innerHTML = repo.repoName || 'proyect missing...'
-        projectLinkWrapper.appendChild(projectAnchor)
+        projectAnchor.innerHTML = repo.repoUrl ? 'to project...' : 'project missing...'
+        anchorDiv.appendChild(projectAnchor)
+        console.log('projectAnchor created and appended:', projectAnchor);
 
+        addSVGToAnchors()
+        
         // Language item
-        const projectLanguage = document.createElement('li')
-        projectLanguage.classList.add('text-muted', 'd-flex', 'align-items-start', 'mb-1', 'project-language')
-        projectLanguage.innerHTML = repo.languages || "No languages."
-        projectItemList.appendChild(projectLanguage)
+        // const projectLanguage = document.createElement('li')
+        // projectLanguage.classList.add('text-muted', 'd-flex', 'align-items-start', 'mb-1', 'project-language')
+        // projectLanguage.innerHTML = repo.languages || "No languages."
+        // projectItemList.appendChild(projectLanguage)
 
         // Updated date
         const projectLastUpdate = document.createElement('li')
@@ -125,26 +127,55 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Readme text
         const readmeText = document.createElement('pre')
+        const readmeBtnCollapse = document.createElement('button')
+        readmeBtnCollapse.setAttribute('id', `toggle-readme-text${index}`)
+        readmeBtnCollapse.classList.add(`toggle-readme`)
+        readmeBtnCollapse.innerHTML = "..."
+
         readmeText.setAttribute('id', `readme-text${index}`)
+        readmeText.classList.add(`readme-text`)
+
         projectItemList.appendChild(readmeText)
+        projectItemList.appendChild(readmeBtnCollapse)
 
         projectListDiv.appendChild(projectBox)
 
         getReadme(user, repo.repoName, index)
     }
 
+    // Event listener for the toggle button readme
+    document.addEventListener('click', function(e) {
+        
+        if (e.target.className === 'toggle-readme'){
+
+            const elementId = e.target.id; const idParts = elementId.split("-"); 
+            const index = idParts[idParts.length - 1];
+
+            const readmeText = document.getElementById(`readme-${index}`) // "text0" is the index
+            if (readmeText.classList.contains('expanded')) {
+                readmeText.classList.remove('expanded');
+            } else {
+                readmeText.classList.add('expanded');
+            }
+        }
+    });
 
     projectListDiv.addEventListener('mouseover', function (e) {
         if (e.target.classList.contains('project-anchor')) {
 
-            let repoName = e.target.innerHTML
-            const element = document.querySelector(`.${e.target.innerHTML}-content-box`)
+            let getRepoName = e.target.href.split('/')
+            let repoName = getRepoName[getRepoName.length - 1]
+            const element = document.querySelector(`.${repoName}-content-box`)
 
             let techsContainer = element.querySelector('.techs-container');
             if (!techsContainer) {
                 techsContainer = document.createElement('div');
                 techsContainer.classList.add('techs-container'); 
                 element.appendChild(techsContainer)
+
+                // Trigger the transition with a slight delay to add visible class 
+                setTimeout(() => { techsContainer.classList.add('visible'); }, 50); 
+                // Slight delay to ensure smooth transition
             }
             const index = e.target.id.split('_')[0][7]
 
@@ -152,6 +183,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 getTechnologies(repoName, techsContainer, index);
             }
 
+            // project pointer guide
+            const techContainer = document.querySelector('.techs-container')
+            if (techContainer) { 
+                const svgPointer = document.querySelector('.pointer-project'); 
+                if (svgPointer) { 
+                    svgPointer.style.opacity = 0;
+                    
+                }
+            }
         }
     })
 
@@ -164,23 +204,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             const techList = element[element.length - 1].split("\n•")
 
             techList.forEach((tech, i) => {
-                if (tech !== "\n" && tech){
+                if (tech !== "\n" && tech && tech.length < 15){
                     let imageElement = document.createElement('img')
                     imageElement.classList.add('tech-item-img')
                     imageElement.setAttribute('alt', tech)
                     imageElement.setAttribute('src', `style/icons/${tech.toLowerCase().trim()}.png`)
                     container.appendChild(imageElement)
-    
                     // Trigger the transition 
                     setTimeout(() => { imageElement.classList.add('visible');
-                    }, i * 100);
+                    }, i * 200);
                 }
             })
         }
     }
 
     // var main_container = document.querySelector('.main-container');
-
     const backToTopBtn = document.getElementById("backToTopBtn");
 
     // var body = document.querySelector('.body');
@@ -212,7 +250,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const selectLanguageBtn = document.querySelector('.select-language-btn')
     selectLanguageBtn.addEventListener('click', function () {
-        // this.innerHTML = selectLanguageBtn.innerHTML !== 'ENG' ? 'ENG' : 'ESP';
+    // this.innerHTML = selectLanguageBtn.innerHTML !== 'ENG' ? 'ENG' : 'ESP';
 
     })
 
@@ -223,10 +261,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         const result = await response.text();
 
         const projectElement = document.getElementById(`readme-text${project_slot}`)
-        const projectSlot = document.getElementById(`project${project_slot}_git_name`)
+        // const projectSlot = document.getElementById(`project${project_slot}_git_name`)
 
         projectElement.innerHTML = result
-        projectSlot.innerHTML = repoName
+        // projectSlot.innerHTML = repoName
 
     }
 
@@ -246,11 +284,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             for (const lan of repo.languages) {
                 if (lan !== null) {
                     let lanProps = lan.split(" ");
-                    let lanPropsObj = {
-                        language: lanProps[0],
-                        percentage: parseFloat(lanProps[1])
+                    if (parseFloat(lanProps[1]) > 1){
+                        console.log(lanProps[1])
+                        let lanPropsObj = {
+                            language: lanProps[0],
+                            percentage: parseFloat(lanProps[1])
+                        }
+                        listOfLan.push(lanPropsObj)
                     }
-                    listOfLan.push(lanPropsObj)
+                    
                 }
             }
         }
@@ -265,6 +307,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         function sumRepeated(list) {
             // Step 1: Accumulate percentages and counts 
             const accumulatedData = list.reduce((acc, { language, percentage }) => {
+
                 if (acc[language]) {
                     acc[language].totalPercentage += percentage;
                     acc[language].count += 1;
@@ -290,17 +333,32 @@ document.addEventListener('DOMContentLoaded', async () => {
                 addProjectTemplate(gitUser, repo, index);
             });
         };
-
         showReadme();
 
     } catch (error) {
         console.error('Error fetching repository data:', error);
     }
-
-
-
-
 });
 
 
 
+    //template for div creation in <!-- LEFT COLUMN / PROJECTS --> class = project-list
+    {/* TEMPLATE
+
+    <div class="box-shadow p-3 mb-3">
+
+        <h2 class="project-title">Movie-app project</h2>
+        <p class="project-description">Ready to beyond the starter template? Check out these open source projects that
+        you can quickly duplicate to a new GitHub repository.</p>
+        <ul class="icon-list ps-0">
+            <li class="d-flex align-items-start mb-1"><a href="https://github.com/JoaquinGodoy97/movie-app-flask"
+                rel="noopener" target="_blank" id="project1_git_name">proyect missing.</a></li>
+            <li class="text-muted d-flex align-items-start mb-1 project-language">
+                # Flask, python
+            </li>
+            <pre id="readme-text1">hola</pre>
+        </ul>
+
+        </div>
+
+    </div> */}

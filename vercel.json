@@ -1,9 +1,4 @@
 {   
-    "functions": {
-    "api/server.mjs": {
-        "runtime": "vercel/node@18.x"
-        }
-    },
     "routes": [
         {
             "src": "/api/(.*)",

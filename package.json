@@ -10,6 +10,9 @@
   "author": "Joaquin Godoy <godoy.joaquin1997@gmail.com>",
   "license": "MIT",
   "private": false,
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "express": "^4.21.1",
     "node-fetch": "^3.3.2",
@@ -19,8 +22,5 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.0"
-  },
-  "engines": {
-    "node": "20.x"
   }
 }

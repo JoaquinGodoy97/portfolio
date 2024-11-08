@@ -1,6 +1,7 @@
 {   
     "functions": {
         "api/server.mjs": {
+        "runtime": "vercel/node@18.x",
         "maxDuration": 20
         }
     },

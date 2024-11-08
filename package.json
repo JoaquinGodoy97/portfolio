@@ -1,7 +1,7 @@
 {
   "name": "porfolio",
   "version": "1.0.0",
-  "main": "./server/server.mjs",
+  "main": "server/server.mjs",
   "type": "module",
   "scripts": {
     "start": "node server/server.mjs"

@@ -1,7 +1,7 @@
 {   
     "functions": {
     "api/server.mjs": {
-        "runtime": "nodejs18"
+        "runtime": "nodejs16.x"
         }
     },
     "routes": [

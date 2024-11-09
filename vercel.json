@@ -1,8 +1,7 @@
 {
     "builds": [
         {
-            "src": "api/server.mjs", 
-            "use": "@vercel/node" 
+            "src": "api/server.mjs"
         }
     ],
     "routes": [

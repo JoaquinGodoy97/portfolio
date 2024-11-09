@@ -1,9 +1,4 @@
 {
-    "builds": [
-        {
-            "src": "api/server.mjs"
-        }
-    ],
     "routes": [
         {
             "src": "/api/(.*)", 

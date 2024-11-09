@@ -30,4 +30,5 @@ app.get('/api/repos', async (req, res) => {
     }); 
 // }
 
-export default serverless(app);
+// Set base path for serverless
+export default serverless(app, { basePath: '/api' });

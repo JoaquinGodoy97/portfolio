@@ -13,19 +13,22 @@ export async function getRepoList() {
     const repos = await response.json();
     console.log('Fetched repos:', repos); 
 
-    const repoListExport = [];
-    for (const repo of repos) {
-        const languagesResponse = await fetch(repo.languages_url);
-        const languagesData = await languagesResponse.json();
-        repoListExport.push({
-            repoName: repo.name,
-            repoUrl: repo.html_url,
-            description: repo.description || 'No description',
-            whenUpdated: repo.updated_at,
-            languages: languagesData,
-        });
-        await delay(200); // Delay 200ms between each call
-    }
+    const repoListExport = await Promise.all(
+        repos.map(async (repo) => {
+            // Fetch the languages for each repository using the languages_url
+            const languagesResponse = await fetch(repo.languages_url);
+            const languagesData = await languagesResponse.json();
+
+
+            return {
+                repoName: repo.name,
+                repoUrl: repo.html_url,
+                description: repo.description || 'No description',
+                whenUpdated: repo.updated_at,
+                languages: languagesData,
+            }
+        })
+    )
     
     // You could fetch languages for each repo as a separate API call if needed
     return {

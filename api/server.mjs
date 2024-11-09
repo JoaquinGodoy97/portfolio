@@ -10,11 +10,15 @@ app.use(express.static('public'));
 
 app.get('/repos', async (req, res) => {
     try{
-        res.writeHead(200, { 'Content-Type': 'application/json' });
         const repoData = await getRepoList();
+        console.log('Checking Data on server.mjs:', repoData)
 
-        res.write(JSON.stringify(repoData));
-        res.end();
+        if (!repoData) {
+            console.error('No data returned from getRepoList');
+            return res.status(500).json({ error: 'No data received' });
+        }
+
+        res.json(repoData);
     } catch (err) {
         res.status(500).send(err.message)
     }
@@ -26,5 +30,10 @@ app.get('/repos', async (req, res) => {
     }); 
 // }
 
-// Set base path for serverless
-export default serverless(app, { basePath: '/api' });
+// // Set base path for serverless
+// export default serverless(app, { basePath: '/api' });
+
+// Export the serverless handler for Vercel
+module.exports.handler = serverless(app, {
+    basePath: '/api'  // Optional: Set a base path if your endpoint needs it
+});

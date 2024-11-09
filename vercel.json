@@ -1,9 +1,4 @@
 {   
-    "functions": {
-        "api/server.mjs": {
-        "maxDuration": 40
-        }
-    },
     "routes": [
         {
             "src": "/api/(.*)",

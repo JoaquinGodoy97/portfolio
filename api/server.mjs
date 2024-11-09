@@ -30,10 +30,7 @@ app.get('/repos', async (req, res) => {
     }); 
 // }
 
-// // Set base path for serverless
-// export default serverless(app, { basePath: '/api' });
-
 // Export the serverless handler for Vercel
-module.exports.handler = serverless(app, {
-    basePath: '/api'  // Optional: Set a base path if your endpoint needs it
+export default serverless(app, {
+    basePath: '/api'  // Optional: Set a base path if needed
 });

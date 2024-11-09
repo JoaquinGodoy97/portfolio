@@ -10,15 +10,11 @@ app.use(express.static('public'));
 
 app.get('/repos', async (req, res) => {
     try{
+        res.writeHead(200, { 'Content-Type': 'application/json' });
         const repoData = await getRepoList();
-        console.log('Checking Data on server.mjs:', repoData)
 
-        if (!repoData) {
-            console.error('No data returned from getRepoList');
-            return res.status(500).json({ error: 'No data received' });
-        }
-
-        res.json(repoData);
+        res.write(JSON.stringify(repoData));
+        res.end();
     } catch (err) {
         res.status(500).send(err.message)
     }

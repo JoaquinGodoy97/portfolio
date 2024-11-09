@@ -1,7 +1,7 @@
 {   
     "functions": {
         "api/server.mjs": {
-        "maxDuration": 30
+        "maxDuration": 40
         }
     },
     "routes": [

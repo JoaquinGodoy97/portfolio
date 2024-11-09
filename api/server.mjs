@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.get('/api/repos', async (req, res) => {
+app.get('/repos', async (req, res) => {
     try{
         const repoData = await getRepoList();
         console.log('Checking Data on server.mjs:', repoData)

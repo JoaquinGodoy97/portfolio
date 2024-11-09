@@ -17,14 +17,14 @@ app.get('/api/repos', async (req, res) => {
             console.error('No data returned from getRepoList');
             return res.status(500).json({ error: 'No data received' });
         }
-        
+
         res.json(repoData);
     } catch (err) {
         res.status(500).send(err.message)
     }
 })
 
-if (process.env.NODE_ENV !== 'production') { 
+if (process.env.NODE_ENV !== 'development') { 
     app.listen(PORT, () => { 
         console.log(`Server running on http://localhost:${PORT}`); 
     }); 

@@ -4,7 +4,7 @@ import {getRepoList} from '../tmp/scrapping/fetchRepo.mjs'
 import serverless from 'serverless-http';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
@@ -22,12 +22,12 @@ app.get('/api/repos', async (req, res) => {
     } catch (err) {
         res.status(500).send(err.message)
     }
-})
-console.log(process.env.NODE_ENV)
-if (process.env.NODE_ENV !== 'production') { 
-    app.listen(PORT, () => { 
-        console.log(`Server running on http://localhost:${PORT}`); 
+// })
+// console.log(process.env.NODE_ENV)
+// if (process.env.NODE_ENV !== 'production') { 
+//     app.listen(PORT, () => { 
+//         console.log(`Server running on http://localhost:${PORT}`); 
     }); 
-}
+// }
 
 export default serverless(app);

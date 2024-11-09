@@ -1,9 +1,37 @@
-import express from 'express';
+import fetch from 'node-fetch';
 
-const app = express();
+export async function getRepoList() {
+    const username = 'JoaquinGodoy97';
+    const reposUrl = `https://api.github.com/users/${username}/repos`;
+    const response = await fetch(reposUrl);
 
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
-});
+    // Check if the response is OK
+    if (!response.ok) {
+        throw new Error('Failed to fetch repos');
+    }
 
-export default app;
+    const repos = await response.json();
+    console.log('Fetched repos:', repos); 
+
+    const repoListExport = await Promise.all(
+        repos.map(async (repo) => {
+            // Fetch the languages for each repository using the languages_url
+            const languagesResponse = await fetch(repo.languages_url);
+            const languagesData = await languagesResponse.json();
+
+
+            return {
+                repoName: repo.name,
+                repoUrl: repo.html_url,
+                description: repo.description || 'No description',
+                whenUpdated: repo.updated_at,
+                languages: languagesData,
+            }
+        })
+    )
+    
+    // You could fetch languages for each repo as a separate API call if needed
+    return {
+        repoList: repoListExport
+    };
+}

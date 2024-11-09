@@ -1,6 +1,6 @@
 import express from 'express';
 // import { fetchRepoData } from '../services/useRepoList.mjs'
-import {getRepoList} from '../tmp/scrapping/fetchRepo.mjs'
+import {getRepoList} from './fetchRepo.mjs'
 import serverless from 'serverless-http';
 
 const app = express();

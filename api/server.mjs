@@ -12,6 +12,12 @@ app.get('/api/repos', async (req, res) => {
     try{
         const repoData = await getRepoList();
         console.log('Checking Data on server.mjs:', repoData)
+
+        if (!repoData) {
+            console.error('No data returned from getRepoList');
+            return res.status(500).json({ error: 'No data received' });
+        }
+        
         res.json(repoData);
     } catch (err) {
         res.status(500).send(err.message)

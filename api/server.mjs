@@ -23,8 +23,8 @@ app.get('/api/repos', async (req, res) => {
         res.status(500).send(err.message)
     }
 })
-
-if (process.env.NODE_ENV !== 'development') { 
+console.log(process.env.NODE_ENV)
+if (process.env.NODE_ENV !== 'production') { 
     app.listen(PORT, () => { 
         console.log(`Server running on http://localhost:${PORT}`); 
     }); 

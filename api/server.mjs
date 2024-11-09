@@ -22,8 +22,6 @@ app.get('/api/repos', async (req, res) => {
     } catch (err) {
         res.status(500).send(err.message)
     }
-// })
-// console.log(process.env.NODE_ENV)
 
 }); 
 
@@ -33,7 +31,6 @@ if (process.env.NODE_ENV !== 'production') {
     })
 }
 
-// Export the serverless handler for Vercel
 export default serverless(app, {
     basePath: '/api'  // Optional: Set a base path if needed
 });

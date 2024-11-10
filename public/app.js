@@ -87,18 +87,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         const projectItemList = document.createElement('ul')
         projectItemList.classList.add('icon-list', 'ps-0')
         projectBox.appendChild(projectItemList)
-        console.log('projectItemList created and appended:', projectItemList);
 
         // Link wrapper and link
         const projectLinkWrapper = document.createElement('li')
         projectLinkWrapper.classList.add('d-flex', 'align-items-start', 'mb-1', 'link-wrapper')
         projectItemList.appendChild(projectLinkWrapper)
-        console.log('projectLinkWrapper created and appended:', projectLinkWrapper);
         
         const anchorDiv = document.createElement('div')
         anchorDiv.classList.add('anchor-project-container')
         projectLinkWrapper.appendChild(anchorDiv)
-        console.log('anchorDiv created and appended:', anchorDiv);
 
         const projectAnchor = document.createElement('a')
         projectAnchor.setAttribute('href', repo.repoUrl || '#')
@@ -108,7 +105,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         projectAnchor.setAttribute('target', '_blank')
         projectAnchor.innerHTML = repo.repoUrl ? 'to project...' : 'project missing...'
         anchorDiv.appendChild(projectAnchor)
-        console.log('projectAnchor created and appended:', projectAnchor);
 
         addSVGToAnchors()
         
@@ -271,7 +267,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch('/api/repos');
         const repoData = await response.json();
 
-        console.log('Checking Data on app.js:', repoData)
         if (!response.ok) {
             throw new Error(`HTTP ERROR ${response.status}`)
         }
@@ -280,7 +275,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         for (const repo of repoData.repoList) {
 
-            console.log(repo)
             const total = Object.values(repo.languages).reduce((acc, val) => acc + val, 0);
 
             for (const [lan, value] of Object.entries(repo.languages)) {
@@ -304,8 +298,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         for (const language of cleanList) {
             addProgressTemplate(language['language'], language['percentage']);
         }
-
-        console.log(listOfLan, "This is the list with languages")
 
         function sumRepeated(list) {
             // Step 1: Accumulate percentages and counts 

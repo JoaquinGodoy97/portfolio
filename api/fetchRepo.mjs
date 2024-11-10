@@ -12,6 +12,8 @@ export async function getRepoList() {
         }
     );
 
+    console.log(response)
+
     if (!response.ok) {
         console.error('Failed to fetch repos');
         throw new Error('Failed to fetch repos', errorData.message);

@@ -342,17 +342,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error fetching repository data:', error);
     }
 
-    const fetchRepos = async () => {
-        const response = await fetch('/api/fetchRepos');  // Request to your backend endpoint
-        if (response.ok) {
-            const data = await response.json();
-            console.log("Front end:", data);  // Use the repo data here
-        } else {
-            console.error("Failed to fetch repos");
-        }
-    };
-    
-    fetchRepos();
 });
 
 

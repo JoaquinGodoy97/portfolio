@@ -1,6 +1,6 @@
 import express from 'express';
 import {getRepoList} from './fetchRepo.mjs'
-import serverless from 'serverless-http';
+// import serverless from 'serverless-http';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -8,9 +8,6 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 app.get('/api/repos', async (req, res) => {
-
-    res.setHeader('Access-Control-Allow-Origin', '*'); 
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
 
     try{
         console.log('Starting fetch process...');
@@ -33,6 +30,6 @@ app.get('/api/repos', async (req, res) => {
     });
 // }
 
-export default serverless(app, {
-    basePath: '/api'  // Optional: Set a base path if needed
-});
+// export default serverless(app, {
+//     basePath: '/api'  // Optional: Set a base path if needed
+// });

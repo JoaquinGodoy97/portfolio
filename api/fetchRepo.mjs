@@ -1,12 +1,25 @@
 import fetch from 'node-fetch';
 
+const TIMEOUT = 5000; // 5 seconds timeout
+
 export async function getRepoList() {
     const username = 'JoaquinGodoy97';
     const reposUrl = `https://api.github.com/users/${username}/repos`;
     const response = await fetch(reposUrl);
 
+    // Wrap fetch with a timeout
+    const fetchWithTimeout = (url, options, timeout = 5000) => {
+        return Promise.race([
+            fetch(url, options),
+            new Promise((_, reject) =>
+                setTimeout(() => reject(new Error("Request timed out")), timeout)
+            )
+        ]);
+    };
+
     // Check if the response is OK
     if (!response.ok) {
+        console.error('Failed to fetch repos');
         throw new Error('Failed to fetch repos');
     }
 
@@ -15,7 +28,8 @@ export async function getRepoList() {
     const repoListExport = await Promise.all(
         repos.map(async (repo) => {
             try {
-                const languagesResponse = await fetch(repo.languages_url);
+                console.log(`Fetching languages for ${repo.name}...`);
+                const languagesResponse = await fetchWithTimeout(reposUrl, { method: 'GET' });
                 if (!languagesResponse.ok) {
                     console.error(`Failed to fetch languages for ${repo.name}`);
                     return {

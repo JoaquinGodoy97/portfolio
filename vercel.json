@@ -1,4 +1,10 @@
-{
+{  
+    "functions": {
+    "api/server.mjs": {
+        "memory": 1024,
+        "maxDuration": 10
+        }
+    },
     "routes": [
         {
             "src": "/api/(.*)", 

@@ -2,7 +2,6 @@
   "name": "porfolio",
   "version": "1.0.0",
   "main": "api/server.mjs",
-  "type": "module",
   "scripts": {
     "start": "node api/server.mjs"
   },
@@ -16,8 +15,7 @@
     "node": "^22.11.0",
     "node-fetch": "^3.3.2",
     "playwright": "^1.48.2",
-    "serverless-http": "^3.2.0",
-    "vercel": "^37.14.0"
+    "serverless-http": "^3.2.0"
   },
   "devDependencies": {}
 }

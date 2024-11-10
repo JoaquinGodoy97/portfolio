@@ -2,6 +2,7 @@
   "name": "porfolio",
   "version": "1.0.0",
   "main": "api/server.mjs",
+  "type": "module",
   "scripts": {
     "start": "node api/server.mjs"
   },
@@ -11,6 +12,7 @@
   "private": false,
   "dependencies": {
     "@types/express": "^5.0.0",
+    "cors": "^2.8.5",
     "express": "^4.21.1",
     "node": "^22.11.0",
     "node-fetch": "^3.3.2",

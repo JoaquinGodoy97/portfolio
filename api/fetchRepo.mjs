@@ -1,35 +1,36 @@
 import fetch from 'node-fetch';
 
-const TIMEOUT = 5000; // 5 seconds timeout
+// const TIMEOUT = 5000; // 5 seconds timeout
+const username = process.env.GITHUB_USERNAME;
+const token = process.env.GITHUB_TOKEN;
 
 export async function getRepoList() {
-    const username = 'JoaquinGodoy97';
     const reposUrl = `https://api.github.com/users/${username}/repos`;
-    const response = await fetch(reposUrl);
-
-    // Wrap fetch with a timeout
-    const fetchWithTimeout = (url, options, timeout = 5000) => {
-        return Promise.race([
-            fetch(url, options),
-            new Promise((_, reject) =>
-                setTimeout(() => reject(new Error("Request timed out")), timeout)
-            )
-        ]);
-    };
+    const response = await fetch(reposUrl,
+        {headers: {
+            'Authorization': `token ${token}`,
+            // 'Accept': 'application/vnd.github.v3+json',  // Optional: specify API version
+            }
+        }
+        
+    );
+    console.log(response)
 
     // Check if the response is OK
     if (!response.ok) {
         console.error('Failed to fetch repos');
-        throw new Error('Failed to fetch repos');
+        throw new Error('Failed to fetch repos', errorData.message);
     }
 
     const repos = await response.json();
+    // console.log(repos)
 
     const repoListExport = await Promise.all(
         repos.map(async (repo) => {
+            // console.log(repo)
             try {
-                console.log(`Fetching languages for ${repo.name}...`);
-                const languagesResponse = await fetchWithTimeout(reposUrl, { method: 'GET' });
+                // console.log(`Fetching languages for ${repo.name}...`);
+                const languagesResponse = {}
                 if (!languagesResponse.ok) {
                     console.error(`Failed to fetch languages for ${repo.name}`);
                     return {
@@ -40,7 +41,7 @@ export async function getRepoList() {
                         languages: {},  // Empty object if languages fetch fails
                     };
                 }
-                const languagesData = await languagesResponse.json();
+                // const languagesData = await languagesResponse.json();
                 return {
                     repoName: repo.name,
                     repoUrl: repo.html_url,
@@ -55,6 +56,7 @@ export async function getRepoList() {
         })
     ).then((results) => results.filter(Boolean));  // Filter out any null results
 
+    console.log(repoListExport)
 
     // You could fetch languages for each repo as a separate API call if needed
     return {

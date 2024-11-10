@@ -2,15 +2,14 @@ import fetch from 'node-fetch';
 
 const username = process.env.GITHUB_USERNAME
 const token = process.env.GITHUB_TOKEN
+const options = {headers: {
+    'Authorization': `token ${token}`,
+    }
+}
 
 export async function getRepoList() {
     const reposUrl = `https://api.github.com/users/${username}/repos`;
-    const response = await fetch(reposUrl,
-        {headers: {
-            'Authorization': `token ${token}`,
-            }
-        }
-    );
+    const response = await fetch(reposUrl, options);
 
     console.log(response)
 
@@ -25,7 +24,7 @@ export async function getRepoList() {
     const repoListExport = await Promise.all(
         repos.map(async (repo) => {
             try {
-                const languagesResponse = await fetch(repo.languages_url);
+                const languagesResponse = await fetch(repo.languages_url, options);
 
                 if (!languagesResponse.ok) {
                     console.error(`Failed to fetch languages for ${repo.name}`);

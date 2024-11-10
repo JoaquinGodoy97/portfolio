@@ -1,18 +1,19 @@
 import express from 'express';
-// import cors from 'cors';
+import cors from 'cors';
 import {getRepoList} from './fetchRepo.mjs'
 import serverless from 'serverless-http';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const cors = require('cors')
 
 app.use(express.static('public'));
 
-// // Dynamically allow all origins in dev, and Vercel subdomains in prod
-// app.use(cors({
-//     origin: process.env.NODE_ENV === 'production' ? 'https://*.vercel.app' : '*',
-//     methods: ['GET', 'POST']  // Specify allowed methods for additional control
-// }));
+// Dynamically allow all origins in dev, and Vercel subdomains in prod
+app.use(cors({
+    origin: process.env.NODE_ENV === 'production' ? 'https://*.vercel.app' : '*',
+    methods: ['GET', 'POST']  // Specify allowed methods for additional control
+}));
 
 
 app.get('/api/repos', async (req, res) => {

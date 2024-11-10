@@ -1,4 +1,4 @@
-// public/app.js
+
 document.addEventListener('DOMContentLoaded', async () => {
     const skillsContainer = document.querySelector('.skills-container');
     const progressList = document.createElement('div');

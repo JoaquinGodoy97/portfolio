@@ -11,8 +11,6 @@ export async function getRepoList() {
     const reposUrl = `https://api.github.com/users/${username}/repos`;
     const response = await fetch(reposUrl, options);
 
-    console.log(response)
-
     if (!response.ok) {
         console.error('Failed to fetch repos');
         throw new Error('Failed to fetch repos', errorData.message);

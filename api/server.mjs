@@ -28,10 +28,12 @@ app.get('/api/repos', async (req, res) => {
     }
 }); 
 
-app.listen(PORT, () => { 
-    console.log(`Server running on http://localhost:${PORT}`); 
-});
+// if (process.env.NODE_ENV !== 'production' || !process.env.NODE_ENV) { 
+    app.listen(PORT, '0.0.0.0', () => { 
+        console.log(`Server running on http://localhost:${PORT}`); 
+    });
+// }
 
 export default serverless(app, {
-    basePath: '/api' 
+    basePath: '/api'  // Optional: Set a base path if needed
 });

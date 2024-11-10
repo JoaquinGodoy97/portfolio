@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
-const username = process.env.USERNAME
-const token = process.env.GITHUB_TOKEN
+const username = 'JoaquinGodoy97'
+const token = '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'
 
 export async function getRepoList() {
     const reposUrl = `https://api.github.com/users/${username}/repos`;

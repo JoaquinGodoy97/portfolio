@@ -4,7 +4,7 @@ import {getRepoList} from './fetchRepo.mjs'
 import serverless from 'serverless-http';
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const cors = require('cors')
 
 app.use(express.static('public'));
@@ -18,13 +18,12 @@ app.use(cors({
 
 app.get('/api/repos', async (req, res) => {
 
-    res.setHeader('Access-Control-Allow-Origin', '*');  // Allow all origins
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');  // Specify allowed methods
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
 
     try{
         console.log('Starting fetch process...');
         const repoData = await getRepoList();
-        // console.log('Data fetched successfully:', repoData);
 
         if (!repoData) {
             console.error('No data returned from getRepoList');

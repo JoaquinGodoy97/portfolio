@@ -9,14 +9,11 @@ export async function getRepoList() {
     const response = await fetch(reposUrl,
         {headers: {
             'Authorization': `token ${token}`,
-            // 'Accept': 'application/vnd.github.v3+json',  // Optional: specify API version
             }
         }
         
     );
-    console.log(response)
 
-    // Check if the response is OK
     if (!response.ok) {
         console.error('Failed to fetch repos');
         throw new Error('Failed to fetch repos', errorData.message);
@@ -30,7 +27,8 @@ export async function getRepoList() {
             // console.log(repo)
             try {
                 // console.log(`Fetching languages for ${repo.name}...`);
-                const languagesResponse = {}
+                const languagesResponse = await fetch(repo.languages_url);
+
                 if (!languagesResponse.ok) {
                     console.error(`Failed to fetch languages for ${repo.name}`);
                     return {
@@ -41,7 +39,7 @@ export async function getRepoList() {
                         languages: {},  // Empty object if languages fetch fails
                     };
                 }
-                // const languagesData = await languagesResponse.json();
+                const languagesData = await languagesResponse.json();
                 return {
                     repoName: repo.name,
                     repoUrl: repo.html_url,
@@ -51,14 +49,11 @@ export async function getRepoList() {
                 };
             } catch (err) {
                 console.error(`Error fetching languages for ${repo.name}: ${err.message}`);
-                return null;  // You might want to exclude repos with errors
+                return null;
             }
         })
-    ).then((results) => results.filter(Boolean));  // Filter out any null results
+    ).then((results) => results.filter(Boolean));  
 
-    console.log(repoListExport)
-
-    // You could fetch languages for each repo as a separate API call if needed
     return {
         repoList: repoListExport
     };

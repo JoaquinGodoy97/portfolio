@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-const username = process.env.USERNAME
+const username = process.env.GITHUB_USERNAME
 const token = process.env.GITHUB_TOKEN
 
 export async function getRepoList() {

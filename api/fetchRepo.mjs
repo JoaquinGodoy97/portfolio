@@ -10,7 +10,6 @@ export async function getRepoList() {
             'Authorization': `token ${token}`,
             }
         }
-        
     );
 
     if (!response.ok) {

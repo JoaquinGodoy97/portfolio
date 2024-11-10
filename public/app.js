@@ -260,10 +260,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const result = await response.text();
 
         const projectElement = document.getElementById(`readme-text${project_slot}`)
-        // const projectSlot = document.getElementById(`project${project_slot}_git_name`)
 
         projectElement.innerHTML = result
-        // projectSlot.innerHTML = repoName
 
     }
 

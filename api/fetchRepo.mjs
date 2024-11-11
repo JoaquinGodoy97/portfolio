@@ -1,7 +1,9 @@
 import fetch from 'node-fetch';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const username = process.env.GITHUB_USERNAME
-const token = process.env.GITHUB_TOKEN
+const token = process.env.GITHUB_API_TOKEN
 const options = {headers: {
     'Authorization': `token ${token}`,
     }

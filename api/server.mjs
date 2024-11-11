@@ -7,7 +7,6 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 app.get('/api/repos', async (req, res) => {
-
     try{
         console.log('Starting fetch process...');
         const repoData = await getRepoList();
@@ -16,7 +15,6 @@ app.get('/api/repos', async (req, res) => {
             console.error('No data returned from getRepoList');
             return res.status(500).json({ error: 'No data received' });
         }
-
         res.json(repoData);
     } catch (err) {
         res.status(500).send(err.message)

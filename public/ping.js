@@ -1,5 +1,5 @@
 // public/app.js
-const url = process.env.BASE_URL; // Replace with your Render URL
+const url = process.env.BASE_URL;
 const interval = 30000; // Interval in milliseconds (30 seconds)
 
 //Reloader Function

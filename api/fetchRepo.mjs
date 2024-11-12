@@ -1,6 +1,9 @@
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
-dotenv.config();
+
+if (process.env.NODE_ENV !== 'production') { 
+    dotenv.config(); 
+}
 
 const username = process.env.GITHUB_USERNAME
 const token = process.env.GITHUB_API_TOKEN

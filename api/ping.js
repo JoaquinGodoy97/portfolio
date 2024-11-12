@@ -1,5 +1,6 @@
+import axios from "axios";
 // public/app.js
-const url = process.env.BASE_URL;
+const url = process.env.BASE_URL || 'http://localhost:3000';
 const interval = 30000; // Interval in milliseconds (30 seconds)
 
 //Reloader Function

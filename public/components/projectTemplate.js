@@ -4,11 +4,10 @@ import { getReadme } from "../helpers/getGithubData.js"
 const skillsContainer = document.querySelector('.skills-container');
 const progressList = document.createElement('div');
 
-function addProjectTemplate(user, repo, index) {
+function addProjectTemplate(username, repo, index) {
     // You can move this if changes the functionality
     progressList.classList.add('progress-list');
     //
-    
     const projectListDiv = document.querySelector('.project-list');
     if (!projectListDiv) {
         console.error('ProjectListDiv not found')
@@ -18,14 +17,18 @@ function addProjectTemplate(user, repo, index) {
     // Outer elements
     const projectBox = document.createElement('div');
     projectBox.classList.add('box-shadow', 'p-3', 'mb-3', 'project-box', `${repo.repoName}-content-box`);
+    projectBox.setAttribute('id', 'project-box')
 
     // Title n description elements
     const projectTitle = document.createElement('h4');
     projectTitle.classList.add('project-title');
     projectTitle.innerHTML = repo.repoName
+
     projectBox.appendChild(projectTitle)
     const projectDescription = document.createElement('p');
     projectDescription.classList.add('project-description');
+    projectDescription.setAttribute('data-section', `${repo.repoName}-project`) // movie-app-flask-project
+    projectDescription.setAttribute('data-value', "project-description")
     projectDescription.innerHTML = repo.description || "No description."
     projectBox.appendChild(projectDescription)
 
@@ -49,7 +52,7 @@ function addProjectTemplate(user, repo, index) {
     projectAnchor.setAttribute('id', `project${index}_git_name`)
     projectAnchor.setAttribute('class', 'project-anchor')
     projectAnchor.setAttribute('target', '_blank')
-    projectAnchor.innerHTML = repo.repoUrl ? 'to project...' : 'project missing...'
+    projectAnchor.innerHTML = repo.repoUrl ? 'to project...' : 'project missing...';
     anchorDiv.appendChild(projectAnchor)
 
     addSVGToAnchors()
@@ -63,6 +66,8 @@ function addProjectTemplate(user, repo, index) {
     // Updated date
     const date = new Date(repo.whenUpdated)
     const projectLastUpdate = document.createElement('li')
+    projectLastUpdate.setAttribute('data-section', `${repo.repoName}-project`)
+    projectLastUpdate.setAttribute('data-value', "project-last-update")
     projectLastUpdate.innerHTML = `Last time updated: ${date.toDateString()}`
     projectItemList.appendChild(projectLastUpdate)
 
@@ -81,7 +86,7 @@ function addProjectTemplate(user, repo, index) {
 
     projectListDiv.appendChild(projectBox)
 
-    getReadme(user, repo.repoName, index)
+    getReadme(username, repo.repoName, index)
 }
 
 function addProgressTemplate(language, progressPercentage) {

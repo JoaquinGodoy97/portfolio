@@ -272,3 +272,11 @@ fill: white;
     max-height: 60px; /* Adjust based on content size */ 
     opacity: 1; 
 }
+
+.hide-flag{
+    display: none;
+}
+
+.main-container{
+    transition: opacity .4s ease-in-out;
+}

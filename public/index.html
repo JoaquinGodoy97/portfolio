@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume Godoy Joaquin</title>
+  <title>CV Godoy Joaquin</title>
   <link rel="stylesheet" href="../style/main.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -20,27 +20,28 @@
 
     <div class="p-3 fonts box-shadow porfolio-description">
 
-      <div class="row justify-content-md-start align-items-center mb-3 pt-3 ">
+      <div id="main-description" class="row justify-content-md-start align-items-center mb-3 pt-3">
         <!-- <img class="g-col-6 "
           src="https://imgbum.jobscdn.com/portal/img/postulantes/1/static/cvMainPic_1033721053_bum_v565758f7.jpg" alt=""
           style="border-radius: 25px; width: 20; height: 20;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;"> -->
-        <h1 class="col-12 ms-3">Software Developer</h1>
-        <h4 class="col-12 ms-3">Joaquin Godoy</h4>
-        <h6 class="col-12 ms-3">Backend, API developer</h6>
+        <h1 class="col-12 ms-3" data-section="main-description" data-value="main-specialization">Software Developer</h1>
+        <h4 class="col-12 ms-3" data-section="main-description" data-value="main-name">Joaquin Godoy</h4>
+        <h6 class="col-12 ms-3" data-section="main-description" data-value="main-role">Backend, API developer</h6>
       </div>
 
       <!-- <div class="row justify-content-md-start col-sm-6 "> -->
         <div class="select-language">
           <!-- href="https://drive.google.com/uc?export=download&id=1aIrtLuA6AxAkwvl4xMhmY7Zuo8yKuTy2" -->
 
-          <div class="language-btn-container">
-            <button class="btn3 select-language-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-translate" viewBox="0 0 16 16">
-                <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z"/>
-                <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31"/>
-              </svg>
+          <div id="language-btn-container" class="language-btn-container">
+            <button id="translate-btn-en" class="btn3 select-language-btn hide-flag" data-language="en">
+                <img id="en" style="border-radius: 2px; margin: auto; opacity: 0.9;" width="28px" height="20px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Flag_of_Great_Britain_%281707%E2%80%931800%29.svg/320px-Flag_of_Great_Britain_%281707%E2%80%931800%29.svg.png" alt="en-flag" srcset="">
             </button>
-          </div>
+            <button id="translate-btn-es" class="btn3 select-language-btn" data-language="es">
+                <img id="es" style="border-radius: 2px; margin: auto; opacity: 0.9;" width="28px" height="20px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/320px-Flag_of_Spain.svg.png" alt="es-flag" srcset="">
+            </button>
+        </div>
+        
           
           <!-- /* From Uiverse.io by Praashoo7 */  -->
           <div class="share">
@@ -60,7 +61,7 @@
 
     <!-- COLUMNS -->
 
-    <div class="row fonts ">
+    <div class="row fonts cards-container">
 
       <!-- LEFT COLUMN / PROJECTS -->
 
@@ -92,7 +93,7 @@
         <!-- SKILLS-->
         <div class="fonts box-shadow p-3 mb-3 skills-container">
 
-          <h4>SKILLS</h4>
+          <h4 data-section="skills" data-value="skills-title">SKILLS</h4>
           <!-- <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p> -->
 
 
@@ -104,7 +105,7 @@
 
           <div class="d-flex me-3 align-items-center">
 
-            <h4>
+            <h4 data-section="course-js" data-value="course-title">
               INTERMEDIATE JAVASCRIPT COURSE WEB DESIGN-ORIENTED
             </h4>
 
@@ -118,14 +119,14 @@
 
           </div>
 
-          <p>sponsored by the Government of Buenos Aires</p>
+          <p data-section="course-js" data-value="course-subtitle">sponsored by the Government of Buenos Aires</p>
 
           <ul class="icon-list ps-0">
-            <li class="text-muted d-flex align-items-start mb-1">
-              PROGRAMMING APR 2021 – JUL 2021
+            <li class="text-muted d-flex align-items-start mb-1" data-section="course-js" data-value="course-date">
+              PROGRAMMING APR 2021 - JUL 2021
             </li>
 
-            <p>
+            <p data-section="course-js" data-value="course-description">
               The goal was to create and manage data as well as give it
               functionality to programs and facilitate the use of complex tasks.
             </p>
@@ -138,7 +139,7 @@
 
           <div class="d-flex me-3 align-items-center">
 
-            <h4>
+            <h4 data-section="course-py" data-value="course-title">
               INTERMIDIATE PYTHON COURSE
             </h4>
 
@@ -153,13 +154,13 @@
 
           </div>
 
-          <p>sponsored by the Government of Buenos Aires</p>
+          <p data-section="course-py" data-value="course-subtitle">sponsored by the Government of Buenos Aires</p>
 
           <ul class="icon-list ps-0">
-            <li class="text-muted d-flex align-items-start mb-1">
-              PROGRAMMING APR 2021 – JUL 2021
+            <li class="text-muted d-flex align-items-start mb-1" data-section="course-py" data-value="course-date">
+              PROGRAMMING APR 2021 - JUL 2021
             </li>
-            <p>
+            <p data-section="course-py" data-value="course-description">
               Understanding the basic concepts to manage a simple static website page. Learning some CSS
               concepts and data storage with javascript.
             </p>
@@ -173,7 +174,7 @@
 
           <div class="d-flex me-3 align-items-center">
 
-            <h4>
+            <h4 data-section="certificates" data-value="certificates-title">
               ONLINE COURSE CERTIFICATES
             </h4>
 
@@ -182,18 +183,18 @@
           <ul class="list-group p-3">
 
             <li><a target="_blank"
-                href="https://www.coursera.org/account/accomplishments/certificate/KR7UKRJVBKQP">Designing Website with
+                href="https://www.coursera.org/account/accomplishments/certificate/KR7UKRJVBKQP" data-section="certificates" data-value="certificates-1">Designing Website with
                 Bootstrap 4</a></li>
             <li><a target="_blank"
-                href="https://www.coursera.org/account/accomplishments/certificate/A5DR4LVU35ZN">Introduction to
+                href="https://www.coursera.org/account/accomplishments/certificate/A5DR4LVU35ZN" data-section="certificates" data-value="certificates-2">Introduction to
                 HTML5</a></li>
             <li><a target="_blank"
-                href="https://cdn.rocketcode.com.ar/upload_images/6e780864f7410f035e34a0865a2fe07d.pdf">GitHub Inicial
+                href="https://cdn.rocketcode.com.ar/upload_images/6e780864f7410f035e34a0865a2fe07d.pdf" data-section="certificates" data-value="certificates-3">GitHub Inicial
                 Course</a></li>
             <li><a target="_blank"
-                href="https://www.coursera.org/account/accomplishments/certificate/68SSXM7GPE9L">Introduction to Social
+                href="https://www.coursera.org/account/accomplishments/certificate/68SSXM7GPE9L" data-section="certificates" data-value="certificates-4">Introduction to Social
                 Media. Objectives and Metrics.</a></li>
-            <li><a target="_blank" href="https://www.efset.org/cert/KxMsJ3">EF SET Certificate 72/100 (C2
+            <li><a target="_blank" href="https://www.efset.org/cert/KxMsJ3" data-section="certificates" data-value="certificates-5">EF SET Certificate 72/100 (C2
                 Proficient)</a></li>
 
           </ul>

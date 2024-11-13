@@ -4,9 +4,54 @@ import { addProjectTemplate, addProgressTemplate } from "./components/projectTem
 import { sumRepeated, getLanguageList } from "./helpers/listHelpers.js";
 import { scrollToTop } from "./helpers/scrollFunctionality.js";
 import { getTechnologies } from "./helpers/getGithubData.js";
+import { textsToLanguage } from "./helpers/textsToLanguage.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
     const projectListDiv = document.querySelector('.project-list');
+
+    const languageBtns = document.querySelectorAll('.select-language-btn');
+        languageBtns.forEach( button => {
+            button.addEventListener("click", function (e) {
+
+                // console.log(e.target.parentElement.dataset.language)
+                const language = e.currentTarget.dataset.language;
+                console.log(`Button clicked, language: ${language}`); // Added logging
+                updateTexts(language)
+            });
+        })
+
+    try {
+        const response = await fetch('/api/repos');
+        const repoData = await response.json();
+
+        if (!response.ok) {
+            throw new Error(`HTTP ERROR ${response.status}`)
+        }
+
+        const listOfLan = getLanguageList(repoData)
+        const cleanList = sumRepeated(listOfLan)
+
+        for (const language of cleanList) {
+            addProgressTemplate(language['language'], language['percentage']);
+        }
+
+        const showReadme = () => {
+            if (!Array.isArray(repoData.repoList)) {
+                console.error('repoDetails is not an array');
+                return;
+            } 
+            
+            repoData.repoList.forEach((repo, index) => {
+                addProjectTemplate(repo.gituser, repo, index);
+            });
+
+        };
+
+        showReadme();
+        // const languageBtnContainer = document.getElementById('language-btn-container');
+    } catch (error) {
+        console.error('Error fetching repository data:', error);
+    }
 
     // Event listener for the toggle button readme
     document.addEventListener('click', function(e) {
@@ -50,8 +95,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
 
     // var main_container = document.querySelector('.main-container');
-    const backToTopBtn = document.getElementById("backToTopBtn");
+    
 
+    const backToTopBtn = document.getElementById("backToTopBtn");
     // var body = document.querySelector('.body');
     window.addEventListener('scroll', function () {
         const valueScrollY = window.scrollY;
@@ -71,41 +117,36 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     })
     
-    const gitUser = 'JoaquinGodoy97'
-
-    try {
-        const response = await fetch('/api/repos');
-        const repoData = await response.json();
-
-        if (!response.ok) {
-            throw new Error(`HTTP ERROR ${response.status}`)
-        }
-
-        const listOfLan = getLanguageList(repoData)
-        const cleanList = sumRepeated(listOfLan)
-
-        for (const language of cleanList) {
-            addProgressTemplate(language['language'], language['percentage']);
-        }
-
-        const showReadme = () => {
-            if (!Array.isArray(repoData.repoList)) {
-                console.error('repoDetails is not an array');
-                return;
-            } repoData.repoList.forEach((repo, index) => {
-                addProjectTemplate(gitUser, repo, index);
-            });
-        };
-
-        showReadme();
-
-    } catch (error) {
-        console.error('Error fetching repository data:', error);
-    }
+    
 
 });
 
+// Store the interval ID to keep track of the interval state
+let intervalId;
 
+// Function to re-query and apply translations
+async function updateTexts(language) {
+    const textsToChange = document.querySelectorAll('[data-section]');
+    let updateInterval = 1500;
+    const mainContainer = document.querySelector('.main-container')
+
+    if (textsToChange.length === 0) {
+        console.warn("No elements to update.");
+        return;
+    }
+    
+    // Clear any existing interval before starting a new one
+    if (intervalId) {
+        clearInterval(intervalId);
+        mainContainer.style.opacity = 0.7;
+    }
+    
+    intervalId  = setInterval(() => {
+                textsToLanguage(language, textsToChange);
+                mainContainer.style.opacity = 1;
+
+            }, updateInterval)
+    }
 
     //template for div creation in <!-- LEFT COLUMN / PROJECTS --> class = project-list
     {/* TEMPLATE

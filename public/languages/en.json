@@ -1,0 +1,38 @@
+{
+    "main-description": {
+        "main-specialization": "Software Developer",
+        "main-name": "Joaquin Godoy",
+        "main-role": "Backend, API developer"
+    },
+    "portfolio-project": {
+        "project-description": "No description",
+        "project-last-update": "Last time updated:"
+    },
+    "movie-app-flask-project": {
+        "project-description": "This is a movie App that takes API data. I'm using the framework flask for the backend coding. For displaying I used Bootstrap. The app also includes a custom pagination functionality.",
+        "project-last-update": "Last time updated:"
+    },
+    "course-js": {
+        "course-title": "INTERMEDIATE JAVASCRIPT COURSE WEB DESIGN-ORIENTED",
+        "course-subtitle": "sponsored by the Government of Buenos Aires",
+        "course-date": "PROGRAMMING APR 2021 - JUL 2021",
+        "course-description": "The goal was to create and manage data as well as give it functionality to programs and facilitate the use of complex tasks."
+    },
+    "course-py": {
+        "course-title": "INTERMIDIATE PYTHON COURSE",
+        "course-subtitle": "sponsored by the Government of Buenos Aires",
+        "course-date": "PROGRAMMING APR 2021 - JUL 2021",
+        "course-description": "The goal was to create and manage data as well as give it functionality to programs and facilitate the use of complex tasks."
+    },
+    "certificates": {
+        "certificates-title": "ONLINE COURSE CERTIFICATES",
+        "certificates-1": "Designing Website with Bootstrap 4",
+        "certificates-2": "Introduction to HTML5",
+        "certificates-3": "GitHub Inicial Course",
+        "certificates-4": "Introduction to Social Media. Objectives and Metrics.",
+        "certificates-5": "EF SET Certificate 72/100 (C2 Proficient)"
+    },
+    "skills": {
+        "skills-title": "SKILLS"
+    }
+}   

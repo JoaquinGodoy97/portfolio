@@ -36,6 +36,7 @@ export async function getRepoList() {
                         repoUrl: repo.html_url,
                         description: repo.description || 'No description',
                         whenUpdated: repo.updated_at,
+                        gituser: username,
                         languages: {}, 
                     };
                 }
@@ -46,6 +47,7 @@ export async function getRepoList() {
                     repoUrl: repo.html_url,
                     description: repo.description || 'No description',
                     whenUpdated: repo.updated_at,
+                    gituser: username,
                     languages: languagesData,
                 };
 

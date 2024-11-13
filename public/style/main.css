@@ -280,3 +280,13 @@ fill: white;
 .main-container{
     transition: opacity .4s ease-in-out;
 }
+
+.lastupdate-container{
+    list-style-type:none;
+    display: flex;
+    padding: 0;
+}
+
+.lastupdate-container li {
+    margin-right: 5px;
+}

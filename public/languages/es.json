@@ -6,11 +6,13 @@
     },
     "portfolio-project": {
         "project-description": "Sin descripción",
+        "to-project": "ir a projecto...",
         "project-last-update": "Última actualización:"
     },
     "movie-app-flask-project": {
         "project-description": "Esta es una aplicación de películas que toma datos de la API. Estoy usando el framework Flask para la programación del backend. Para la visualización usé Bootstrap. La aplicación también incluye una funcionalidad de paginación personalizada.",
-        "project-last-update": "Última actualización:"
+        "to-project": "ir a projecto...",
+        "project-last-update": "Última actualización: "
     },
     "course-js": {
         "course-title": "CURSO INTERMEDIO DE JAVASCRIPT ORIENTADO AL DISEÑO WEB",

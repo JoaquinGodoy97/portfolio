@@ -6,11 +6,13 @@
     },
     "portfolio-project": {
         "project-description": "No description",
+        "to-project":"go to project...",
         "project-last-update": "Last time updated:"
     },
     "movie-app-flask-project": {
         "project-description": "This is a movie App that takes API data. I'm using the framework flask for the backend coding. For displaying I used Bootstrap. The app also includes a custom pagination functionality.",
-        "project-last-update": "Last time updated:"
+        "to-project":"go to project...",
+        "project-last-update": "Last time updated: "
     },
     "course-js": {
         "course-title": "INTERMEDIATE JAVASCRIPT COURSE WEB DESIGN-ORIENTED",

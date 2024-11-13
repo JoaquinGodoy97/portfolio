@@ -52,7 +52,9 @@ function addProjectTemplate(username, repo, index) {
     projectAnchor.setAttribute('id', `project${index}_git_name`)
     projectAnchor.setAttribute('class', 'project-anchor')
     projectAnchor.setAttribute('target', '_blank')
-    projectAnchor.innerHTML = repo.repoUrl ? 'to project...' : 'project missing...';
+    projectAnchor.setAttribute('data-section', `${repo.repoName}-project`)
+    projectAnchor.setAttribute('data-value', "to-project")
+    projectAnchor.innerHTML = repo.repoUrl ? 'to project...' : null;
     anchorDiv.appendChild(projectAnchor)
 
     addSVGToAnchors()
@@ -65,11 +67,20 @@ function addProjectTemplate(username, repo, index) {
 
     // Updated date
     const date = new Date(repo.whenUpdated)
+
+    const dateContainer = document.createElement('ul')
+    dateContainer.classList.add('lastupdate-container')
+    const dateDefaulttext = document.createElement('li')
+    dateDefaulttext.setAttribute('data-section', `${repo.repoName}-project`)
+    dateDefaulttext.setAttribute('data-value', "project-last-update")
+    dateDefaulttext.innerHTML = "Last time updated: "
+    dateContainer.appendChild(dateDefaulttext)
+
     const projectLastUpdate = document.createElement('li')
-    projectLastUpdate.setAttribute('data-section', `${repo.repoName}-project`)
-    projectLastUpdate.setAttribute('data-value', "project-last-update")
-    projectLastUpdate.innerHTML = `Last time updated: ${date.toDateString()}`
-    projectItemList.appendChild(projectLastUpdate)
+    
+    projectLastUpdate.innerHTML = ` ${date.toDateString()}`
+    dateContainer.appendChild(projectLastUpdate)
+    projectItemList.appendChild(dateContainer)
 
     // Readme text
     const readmeText = document.createElement('pre')

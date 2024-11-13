@@ -27,15 +27,9 @@ export const textsToLanguage = async (language, elementsToTranslate) => {
             if (textTochange === null) {
                 console.log("null")
             }
-            
-            // console.log(textTochange)
-            // const date = textTochange.innerHTML
-
-            // if (date.includes(": ")) {
-            //     console.log(textTochange);
-            // }
 
             textTochange.innerHTML = texts[section][value]
+            
         }
 
     } catch (err) {

@@ -21,7 +21,10 @@ function addProjectTemplate(username, repo, index) {
 
     // Title n description elements
     const projectTitle = document.createElement('h4');
+    projectTitle.setAttribute('data-section', `${repo.repoName}-project`) // movie-app-flask-project
+    projectTitle.setAttribute('data-value', "repo-name")
     projectTitle.classList.add('project-title');
+    
     projectTitle.innerHTML = repo.repoName
 
     projectBox.appendChild(projectTitle)
@@ -59,13 +62,6 @@ function addProjectTemplate(username, repo, index) {
 
     addSVGToAnchors()
     
-    // Language item // not actually needed since there is a icons display
-    // const projectLanguage = document.createElement('li')
-    // projectLanguage.classList.add('text-muted', 'd-flex', 'align-items-start', 'mb-1', 'project-language')
-    // projectLanguage.innerHTML = repo.languages || "No languages."
-    // projectItemList.appendChild(projectLanguage)
-
-    // Updated date
     const date = new Date(repo.whenUpdated)
 
     const dateContainer = document.createElement('ul')
@@ -77,7 +73,8 @@ function addProjectTemplate(username, repo, index) {
     dateContainer.appendChild(dateDefaulttext)
 
     const projectLastUpdate = document.createElement('li')
-    
+    projectLastUpdate.setAttribute('id', `${repo.repoName}-last-updated-value`)
+
     projectLastUpdate.innerHTML = ` ${date.toDateString()}`
     dateContainer.appendChild(projectLastUpdate)
     projectItemList.appendChild(dateContainer)

@@ -5,11 +5,13 @@
         "main-role": "Desarrollador Backend, API"
     },
     "portfolio-project": {
+        "repo-name": "portfolio",
         "project-description": "Sin descripción",
         "to-project": "ir a projecto...",
         "project-last-update": "Última actualización:"
     },
     "movie-app-flask-project": {
+        "repo-name": "movie-app-flask",
         "project-description": "Esta es una aplicación de películas que toma datos de la API. Estoy usando el framework Flask para la programación del backend. Para la visualización usé Bootstrap. La aplicación también incluye una funcionalidad de paginación personalizada.",
         "to-project": "ir a projecto...",
         "project-last-update": "Última actualización: "

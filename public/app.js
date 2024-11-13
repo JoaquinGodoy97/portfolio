@@ -111,14 +111,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         this.style.display = "none";
     });
 
-    const selectLanguageBtn = document.querySelector('.select-language-btn')
-    selectLanguageBtn.addEventListener('click', function () {
-    // this.innerHTML = selectLanguageBtn.innerHTML !== 'ENG' ? 'ENG' : 'ESP';
-
-    })
-    
-    
-
 });
 
 // Store the interval ID to keep track of the interval state
@@ -144,7 +136,7 @@ async function updateTexts(language) {
     intervalId  = setInterval(() => {
                 textsToLanguage(language, textsToChange);
                 mainContainer.style.opacity = 1;
-
+                clearInterval(intervalId);
             }, updateInterval)
     }
 

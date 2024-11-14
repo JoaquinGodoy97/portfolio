@@ -7,6 +7,9 @@ import { getTechnologies } from "./helpers/getGithubData.js";
 import { textsToLanguage } from "./helpers/textsToLanguage.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
+
+    const mediaQuery = window.matchMedia('(max-width: 768px)'); // You can adjust this breakpoint
+
     const projectListDiv = document.querySelector('.project-list');
 
     const languageBtns = document.querySelectorAll('.select-language-btn');
@@ -45,12 +48,27 @@ document.addEventListener('DOMContentLoaded', async () => {
                 addProjectTemplate(repo.gituser, repo, index);
             });
 
+
         };
 
         showReadme();
+
+        // Wait briefly to ensure .project-anchor elements are in DOM
+        setTimeout(() => {
+            handleScreenSizeChange(mediaQuery);
+        }, 100);  // Delay in milliseconds
+
+
         // const languageBtnContainer = document.getElementById('language-btn-container');
     } catch (error) {
         console.error('Error fetching repository data:', error);
+    }
+
+    if (mediaQuery.addEventListener) { 
+        mediaQuery.addEventListener('change', handleScreenSizeChange); 
+    } else if (mediaQuery.addListener) { 
+        // For older browsers 
+        mediaQuery.addListener(handleScreenSizeChange); 
     }
 
     // Event listener for the toggle button readme
@@ -160,3 +178,26 @@ async function updateTexts(language) {
         </div>
 
     </div> */}
+
+    async function handleScreenSizeChange(e) { 
+
+        const projectList = document.querySelectorAll('.project-anchor')
+        
+        if (e.matches && !document.querySelector('.techs-container')) { 
+        // If the screen width is less than or equal to 768px (phone screen size) 
+
+            for (const project of projectList) {
+
+                let getRepoName = project.href.split('/')
+                const elementId = project.id;
+                console.log(getRepoName, "id and : ", elementId)
+
+                const [index, techsContainer] = getAnchorIndex(getRepoName, elementId)
+
+                await getTechnologies(techsContainer, index);
+                console.log('Smaller screen detected!'); 
+                
+            }
+
+        } 
+    }

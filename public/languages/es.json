@@ -38,5 +38,8 @@
     },
     "skills": {
         "skills-title": "HABILIDADES"
+    },
+    "workflow-skills": {
+        "workflow-skills-title": "Conocimientos de flujo de trabajo"
     }
 }

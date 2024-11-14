@@ -31,7 +31,7 @@ function getLanguageList(list){
             if (lan !== null) {
                 // let lanProps = lan.split(" ");
                 const percentage = (parseFloat(value) / total) * 100;
-                if (percentage > 1){
+                if (percentage > 3){
                 //     console.log(lanProps[1])
                     let lanPropsObj = {
                         language: lan,

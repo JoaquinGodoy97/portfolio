@@ -22,6 +22,23 @@ export async function getRepoList() {
     }
 
     const repos = await response.json();
+
+    // ORGS REPOSITORY
+    const repoOrgUrl = "https://api.github.com/orgs/Fulbito5Manager/repos";
+    const responseRepoOrg = await fetch(repoOrgUrl, options)
+    const dataRepoOrg = await responseRepoOrg.json();
+
+    if (!responseRepoOrg.ok) {
+        console.error('Failed to fetch reposORGS');
+        throw new Error('Failed to fetch repos', errorData.message);
+    }
+
+    for (const repo of dataRepoOrg) {
+
+        if (repo.name === "ranking_app") {
+            repos.push(repo)
+        } 
+    }
     // console.log(repos)
 
     const repoListExport = await Promise.all(

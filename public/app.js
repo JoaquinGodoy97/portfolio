@@ -5,6 +5,7 @@ import { sumRepeated, getLanguageList } from "./helpers/listHelpers.js";
 import { scrollToTop } from "./helpers/scrollFunctionality.js";
 import { getTechnologies } from "./helpers/getGithubData.js";
 import { textsToLanguage } from "./helpers/textsToLanguage.js";
+import { addSVGToAnchors } from "./components/svgIcon.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -48,10 +49,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 addProjectTemplate(repo.gituser, repo, index);
             });
 
-
         };
 
         showReadme();
+
+        await addSVGToAnchors()
 
         // Wait briefly to ensure .project-anchor elements are in DOM
         setTimeout(() => {
@@ -144,16 +146,16 @@ async function updateTexts(language) {
         console.warn("No elements to update.");
         return;
     }
+    mainContainer.style.opacity = 0.7;
     
     // Clear any existing interval before starting a new one
     if (intervalId) {
         clearInterval(intervalId);
-        mainContainer.style.opacity = 0.7;
     }
     
     intervalId  = setInterval(() => {
-                textsToLanguage(language, textsToChange);
                 mainContainer.style.opacity = 1;
+                textsToLanguage(language, textsToChange);
                 clearInterval(intervalId);
             }, updateInterval)
     }
@@ -180,24 +182,16 @@ async function updateTexts(language) {
     </div> */}
 
     async function handleScreenSizeChange(e) { 
-
         const projectList = document.querySelectorAll('.project-anchor')
         
         if (e.matches && !document.querySelector('.techs-container')) { 
         // If the screen width is less than or equal to 768px (phone screen size) 
-
             for (const project of projectList) {
-
                 let getRepoName = project.href.split('/')
                 const elementId = project.id;
-                console.log(getRepoName, "id and : ", elementId)
-
                 const [index, techsContainer] = getAnchorIndex(getRepoName, elementId)
-
                 await getTechnologies(techsContainer, index);
-                console.log('Smaller screen detected!'); 
                 
             }
-
         } 
     }

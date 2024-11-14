@@ -17,12 +17,18 @@ function createSVG() {
 }
 
 // Function to append the SVG to project anchors
-function addSVGToAnchors() {
+async function addSVGToAnchors() {
+
     const anchorDiv = document.querySelectorAll('.anchor-project-container')
-    anchorDiv.forEach(anchor => {
-        const svg = createSVG();
-        anchor.appendChild(svg); // Appending the SVG next to the anchor text
-    });
+
+    const svg = createSVG();
+    anchorDiv[0].appendChild(svg)
+
+    // anchorDiv.forEach(anchor => {
+    // const svg = createSVG();
+    // anchor.appendChild(svg); // Appending the SVG next to the anchor text
+    // });
+
 }
 
 export { addSVGToAnchors, createSVG}

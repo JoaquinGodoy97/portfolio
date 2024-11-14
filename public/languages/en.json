@@ -20,7 +20,7 @@
         "course-title": "INTERMEDIATE JAVASCRIPT COURSE WEB DESIGN-ORIENTED",
         "course-subtitle": "sponsored by the Government of Buenos Aires",
         "course-date": "PROGRAMMING APR 2021 - JUL 2021",
-        "course-description": "The goal was to create and manage data as well as give it functionality to programs and facilitate the use of complex tasks."
+        "course-description": "Understanding the basic concepts to manage a simple static website page. Learning some CSS concepts and data storage with javascript."
     },
     "course-py": {
         "course-title": "INTERMIDIATE PYTHON COURSE",
@@ -38,5 +38,8 @@
     },
     "skills": {
         "skills-title": "SKILLS"
+    },
+    "workflow-skills": {
+        "workflow-skills-title": "Workflow Skills"
     }
 }   

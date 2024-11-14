@@ -1,10 +1,22 @@
 async function getReadme(user, repoName, project_slot) {
 
+    const orgs = 'Fulbito5Manager'
+
     project_slot = String(project_slot);
-    const response = await fetch(`https://raw.githubusercontent.com/${user}/${repoName}/main/README.md`);
-    const result = await response.text();
     const projectElement = document.getElementById(`readme-text${project_slot}`)
-    projectElement.innerHTML = result
+
+    if (repoName === "ranking_app") {
+        const responseOrgRepo = await fetch(`https://raw.githubusercontent.com/${orgs}/${repoName}/main/README.md`).catch(() => null);
+        const resultOrgRepo = await responseOrgRepo.text();
+        
+        projectElement.innerHTML = resultOrgRepo;
+
+    } else {
+        const response = await fetch(`https://raw.githubusercontent.com/${user}/${repoName}/main/README.md`);
+        const result = await response.text();
+
+        projectElement.innerHTML = result;
+    }
 }
 
 async function getTechnologies(container, index){

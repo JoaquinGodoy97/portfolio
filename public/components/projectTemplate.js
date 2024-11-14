@@ -60,7 +60,9 @@ function addProjectTemplate(username, repo, index) {
     projectAnchor.innerHTML = repo.repoUrl ? 'to project...' : null;
     anchorDiv.appendChild(projectAnchor)
 
-    addSVGToAnchors()
+    // if (projectAnchor.id === 'project0_git_name') {
+    //     addSVGToAnchors()
+    // }
     
     const date = new Date(repo.whenUpdated)
 
@@ -94,7 +96,11 @@ function addProjectTemplate(username, repo, index) {
 
     projectListDiv.appendChild(projectBox)
 
-    getReadme(username, repo.repoName, index)
+    try {
+        getReadme(username, repo.repoName, index)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 function addProgressTemplate(language, progressPercentage) {

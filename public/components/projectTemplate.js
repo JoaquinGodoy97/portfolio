@@ -82,7 +82,7 @@ function addProjectTemplate(username, repo, index) {
     projectItemList.appendChild(dateContainer)
 
     // Readme text
-    const readmeText = document.createElement('pre')
+    const readmeText = document.createElement('div')
     const readmeBtnCollapse = document.createElement('button')
     readmeBtnCollapse.setAttribute('id', `toggle-readme-text${index}`)
     readmeBtnCollapse.classList.add(`toggle-readme`)

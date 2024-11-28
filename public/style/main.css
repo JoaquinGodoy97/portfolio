@@ -220,8 +220,10 @@ fill: white;
 
 /*  collapsable button */
 .readme-text {
+    font-size: 12px;
     margin-top: 10px;
     color: #4c4c4c !important;
+    background-color: rgb(230, 230, 194);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;

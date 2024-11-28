@@ -1,3 +1,5 @@
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+
 async function getReadme(user, repoName, project_slot) {
 
     const orgs = 'Fulbito5Manager'
@@ -8,14 +10,18 @@ async function getReadme(user, repoName, project_slot) {
     if (repoName === "ranking_app") {
         const responseOrgRepo = await fetch(`https://raw.githubusercontent.com/${orgs}/${repoName}/main/README.md`).catch(() => null);
         const resultOrgRepo = await responseOrgRepo.text();
+        const markedResult = await marked(resultOrgRepo)
         
-        projectElement.innerHTML = resultOrgRepo;
+        projectElement.innerHTML = markedResult;
 
     } else {
         const response = await fetch(`https://raw.githubusercontent.com/${user}/${repoName}/main/README.md`);
         const result = await response.text();
+        const markedResult = await marked(result)
+        
+        projectElement.innerHTML = markedResult;
 
-        projectElement.innerHTML = result;
+        // projectElement.innerHTML = result;
     }
 }
 

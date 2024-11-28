@@ -28,11 +28,18 @@ async function getReadme(user, repoName, project_slot) {
 async function getTechnologies(container, index){
     const readmeFile = document.getElementById(`readme-text${index}`)
 
-    if (readmeFile.innerHTML.includes('## Techs')) {
-        const element = readmeFile.innerHTML.split("## Techs")
-        const techList = element[element.length - 1].split("\n•")
+    if (readmeFile.innerHTML.includes('Techs')) {
 
-        techList.forEach((tech, i) => {
+        // CONFIG WITHOUT MARKED LIBRARY WITH PRE README FILE
+        // const element = readmeFile.innerHTML.split("## Techs")
+        // const techList = element[element.length - 1].split("\n•")
+
+        //CONFIG FOR MARKED LIBRARY
+        const items = readmeFile.innerHTML.split("Techs")[1].split('•')
+        const cleanItems = items.map(item => item.trim()); 
+        const names = cleanItems.map(item => item.replace(/<\/?[^>]+(>|$)/g, ""));
+
+            names.forEach((tech, i) => {
             if (tech !== "\n" && tech && tech.length < 15){
                 let imageElement = document.createElement('img')
                 imageElement.classList.add('tech-item-img')

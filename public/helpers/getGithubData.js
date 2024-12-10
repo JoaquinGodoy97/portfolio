@@ -43,8 +43,10 @@ async function getTechnologies(container, index){
             if (tech !== "\n" && tech && tech.length < 15){
                 let imageElement = document.createElement('img')
                 imageElement.classList.add('tech-item-img')
-                imageElement.setAttribute('alt', tech)
+                imageElement.setAttribute('title', tech.toLowerCase().trim())
+                imageElement.setAttribute('alt', tech.toLowerCase().trim())
                 imageElement.setAttribute('src', `style/icons/${tech.toLowerCase().trim()}.png`)
+                
                 container.appendChild(imageElement)
                 // Trigger the transition 
                 setTimeout(() => { imageElement.classList.add('visible');

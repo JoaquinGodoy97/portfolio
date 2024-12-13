@@ -22,6 +22,12 @@
         "to-project": "ir a projecto...",
         "project-last-update": "Última actualización: "
     },
+    "ranking_app-project": {
+        "repo-name": "ranking_app-project",
+        "project-description": "Sistema de ranking que se comunica con los servicios principales de Fulbito5Manager, brinda un perfil de ranking individual para cada jugador.",
+        "to-project": "ir a projecto...",
+        "project-last-update": "Última actualización: "
+    },
     "course-js": {
         "course-title": "CURSO INTERMEDIO DE JAVASCRIPT ORIENTADO AL DISEÑO WEB",
         "course-subtitle": "patrocinado por el Gobierno de Buenos Aires",

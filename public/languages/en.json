@@ -19,8 +19,14 @@
     "unconscious-game-project": {
         "repo-name": "unconscious-game",
         "project-description": "Divagating & asking questions is the way to discover clues in the game. To discover the unconscious places of your mind.",
-        "to-project": "ir a projecto...",
-        "project-last-update": "Última actualización: "
+        "to-project": "go to project...",
+        "project-last-update": "Last time updated: "
+    },
+    "ranking_app-project": {
+        "repo-name": "ranking_app-project",
+        "project-description": "Ranking system that communicates with the main services of Fulbito5Manager providing a personal ranking profile for each individual player.",
+        "to-project": "go to project...",
+        "project-last-update": "Last time updated: "
     },
     "course-js": {
         "course-title": "INTERMEDIATE JAVASCRIPT COURSE WEB DESIGN-ORIENTED",

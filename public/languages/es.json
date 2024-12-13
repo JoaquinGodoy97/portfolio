@@ -1,18 +1,24 @@
 {
     "main-description": {
-        "main-specialization": "Desarrollador de Software",
+        "main-specialization": "Programador Trainee / Jr. ",
         "main-name": "Joaquín Godoy",
         "main-role": "Desarrollador Backend, API"
     },
     "portfolio-project": {
         "repo-name": "portfolio",
-        "project-description": "Sin descripción",
+        "project-description": "¡Hola! Échale un vistazo a mi portafolio. Encontrarás mis proyectos más recientes hasta el momento. Allons-y!",
         "to-project": "ir a projecto...",
         "project-last-update": "Última actualización:"
     },
     "movie-app-flask-project": {
         "repo-name": "movie-app-flask",
         "project-description": "Esta es una aplicación de películas que toma datos de la API. Estoy usando el framework Flask para la programación del backend. Para la visualización usé Bootstrap. La aplicación también incluye una funcionalidad de paginación personalizada.",
+        "to-project": "ir a projecto...",
+        "project-last-update": "Última actualización: "
+    },
+    "unconscious-game-project": {
+        "repo-name": "unconscious-game",
+        "project-description": "Divagar y hacer preguntas es la manera de descubrir pistas en el juego. Para explorar los lugares inconscientes de tu mente.",
         "to-project": "ir a projecto...",
         "project-last-update": "Última actualización: "
     },

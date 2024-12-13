@@ -1,12 +1,12 @@
 {
     "main-description": {
-        "main-specialization": "Software Developer",
+        "main-specialization": "Trainee / Jr. Software Developer",
         "main-name": "Joaquin Godoy",
         "main-role": "Backend, API developer"
     },
     "portfolio-project": {
         "repo-name": "portfolio",
-        "project-description": "No description",
+        "project-description": "Hi there. Take a look at my portfolio. You will find my lastest projects at the moment. Allons-y!",
         "to-project":"go to project...",
         "project-last-update": "Last time updated:"
     },
@@ -15,6 +15,12 @@
         "project-description": "This is a movie App that takes API data. I'm using the framework flask for the backend coding. For displaying I used Bootstrap. The app also includes a custom pagination functionality.",
         "to-project":"go to project...",
         "project-last-update": "Last time updated: "
+    },
+    "unconscious-game-project": {
+        "repo-name": "unconscious-game",
+        "project-description": "Divagating & asking questions is the way to discover clues in the game. To discover the unconscious places of your mind.",
+        "to-project": "ir a projecto...",
+        "project-last-update": "Última actualización: "
     },
     "course-js": {
         "course-title": "INTERMEDIATE JAVASCRIPT COURSE WEB DESIGN-ORIENTED",

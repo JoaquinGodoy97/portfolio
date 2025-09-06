@@ -1,0 +1,57 @@
+{
+    "main-description": {
+        "main-specialization": "Trainee / Jr. Software Developer",
+        "main-name": "Joaquin Godoy",
+        "main-role": "Backend, API developer"
+    },
+    "portfolio-project": {
+        "repo-name": "portfolio",
+        "project-description": "Hi there. Take a look at my portfolio. You will find my lastest projects at the moment. Allons-y!",
+        "to-project":"go to project...",
+        "project-last-update": "Last time updated:"
+    },
+    "movie-app-flask-project": {
+        "repo-name": "movie-app-flask",
+        "project-description": "This is a movie App that takes API data. I'm using the framework flask for the backend coding. For displaying I used Bootstrap. The app also includes a custom pagination functionality.",
+        "to-project":"go to project...",
+        "project-last-update": "Last time updated: "
+    },
+    "unconscious-game-project": {
+        "repo-name": "unconscious-game",
+        "project-description": "Divagating & asking questions is the way to discover clues in the game. To discover the unconscious places of your mind.",
+        "to-project": "go to project...",
+        "project-last-update": "Last time updated: "
+    },
+    "ranking_app-project": {
+        "repo-name": "ranking_app-project",
+        "project-description": "Ranking system that communicates with the main services of Fulbito5Manager providing a personal ranking profile for each individual player.",
+        "to-project": "go to project...",
+        "project-last-update": "Last time updated: "
+    },
+    "course-js": {
+        "course-title": "INTERMEDIATE JAVASCRIPT COURSE WEB DESIGN-ORIENTED",
+        "course-subtitle": "sponsored by the Government of Buenos Aires",
+        "course-date": "PROGRAMMING APR 2021 - JUL 2021",
+        "course-description": "Understanding the basic concepts to manage a simple static website page. Learning some CSS concepts and data storage with javascript."
+    },
+    "course-py": {
+        "course-title": "INTERMIDIATE PYTHON COURSE",
+        "course-subtitle": "sponsored by the Government of Buenos Aires",
+        "course-date": "PROGRAMMING APR 2021 - JUL 2021",
+        "course-description": "The goal was to create and manage data as well as give it functionality to programs and facilitate the use of complex tasks."
+    },
+    "certificates": {
+        "certificates-title": "ONLINE COURSE CERTIFICATES",
+        "certificates-1": "Designing Website with Bootstrap 4",
+        "certificates-2": "Introduction to HTML5",
+        "certificates-3": "GitHub Inicial Course",
+        "certificates-4": "Introduction to Social Media. Objectives and Metrics.",
+        "certificates-5": "EF SET Certificate 72/100 (C2 Proficient)"
+    },
+    "skills": {
+        "skills-title": "SKILLS"
+    },
+    "workflow-skills": {
+        "workflow-skills-title": "Workflow Skills"
+    }
+}   

@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Source+Code+Pro:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;1,100&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body { 
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+body{
+    height: 100%; 
+    min-height:100vh;
+    background-color: black !important;
+    position: relative;
+    overflow-y: hidden;
+}
+
+body::before{
+    content: "";
+    display: flex;
+    position: fixed;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background-image: url("https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-repeat: repeat;
+    background-size: 200px;
+    opacity: 0.25;
+    
+}
+
+.progress-list{
+    list-style: none;
+    list-style-type: none;
+}
+.fonts{
+    font-family: 'Source Code Pro', monospace;
+}
+
+.box-shadow{
+    background-color: rgb(222, 222, 222);
+    
+    /* /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
+    border-radius: 10px; 
+}
+
+.link-icon-expand:hover{
+    transform: scale(120%);
+    transition: transform 1s;
+}
+
+#backToTopBtn:hover {
+    background-color: #555; /* Darker background on hover */
+}
+
+.select-language{
+    top: 0;
+    border-radius: 100%;
+    padding: 0 0 0 0; 
+    display: flex;
+    /* flex-direction: row; */
+}
+
+.select-language > div {
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    /* background-color: red; */
+}
+
+.language-btn-container{
+    margin-right: 10px;
+    align-items: center;
+    display: flex;
+}
+
+.porfolio-description{
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+}
+
+.porfolio-description h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800 !important;
+    font-style: normal;
+}
+
+.porfolio-description {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.porfolio-description{
+    display: flex;
+}
+
+
+.project-box{
+    color: rgb(13, 13, 13);
+    background-color: rgb(222, 222, 222);
+    opacity: 1 !important;
+    z-index: 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 10px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.project-box > ul {
+    list-style-type: none;
+}
+
+
+/* Scroll up by ArturCodeCraft*/
+
+/* <reset-style> ============================ */
+#scroll-up {
+    text-decoration: none;
+}
+
+/* <main-style> ============================ */
+.scroll-up {
+    right: 3rem;
+    bottom: -50%;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: rgba(29, 29, 31, 0.7);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: bottom .4s, transform .4s;
+}
+
+.scroll-up:hover {
+    transform: translateY(-.25rem);
+}
+
+/* Show scroll-up */
+._show-scroll {
+    bottom: 3rem;
+}
+
+@media (max-width: 1199.98px) {
+    .scroll-up {
+        right: 1rem;
+    }
+}
+
+/* button back to top */
+
+#backToTopBtn, #backToTopBtn:hover {
+    background-color: transparent;
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    bottom: 20px; /* Position from the bottom */
+    right: 30px; /* Position from the right */
+    outline: none;
+    border: none;
+}
+
+
+/* GITHUB BUTTON */
+
+.share {
+    display: flex;
+    align-items: center;
+    /* gap: 1em; */
+    transition: .4s ease-in-out;
+    /* margin-top: 20px; */
+}
+
+.btn3 {
+    position: relative;
+    width: 3em;
+    height: 3em;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    transition: .4s all;
+}
+
+
+.btn3:hover {
+background-color: rgba(29, 29, 31, 0.7);
+color: white;
+}
+
+.btn3:hover .git {
+fill: white;
+}
+
+
+/* technologies  list*/
+.tech-item-img{
+    opacity: 0;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    transform: translateX(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Style to be applied when they are visible */
+.tech-item-img.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/*  collapsable button */
+.readme-text {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #4c4c4c !important;
+    background-color: rgb(230, 230, 194);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.readme-text.expanded {
+    max-height: 300px; /* Adjust based on content size */
+    overflow-y: auto;
+}
+
+.readme-text::-webkit-scrollbar { 
+    width: 0; /* Remove scrollbar space */ 
+    background: transparent; 
+}
+
+/* Define the keyframes for the animation */
+@keyframes sway {
+    0% {
+        transform: rotate(270deg) translateY(0);
+    }
+    50% {
+        transform: rotate(270deg) translateY(10px);
+    }
+    100% {
+        transform: rotate(270deg) translateY(0);
+    }
+}
+
+/* Pointer project class with animation */
+.pointer-project {
+    margin-left: 10px;
+    opacity: 1;
+    transform: rotate(270deg);
+    animation: sway 1s ease-in-out infinite;
+    transition: opacity 2s ease-in-out;
+}
+
+/* Initial state for the techs-container */ 
+.techs-container { 
+    max-height: 0; 
+    overflow: hidden; 
+    opacity: 0; 
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; 
+} 
+
+/* State when the techs-container is visible */ 
+.techs-container.visible { 
+    max-height: 60px; /* Adjust based on content size */ 
+    opacity: 1; 
+}
+
+.hide-flag{
+    display: none;
+}
+
+.main-container{
+    transition: opacity .4s ease-in-out;
+}
+
+.lastupdate-container{
+    list-style-type:none;
+    display: flex;
+    padding: 0;
+}
+
+.lastupdate-container li {
+    margin-right: 5px;
+}

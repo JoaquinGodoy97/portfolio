@@ -1,0 +1,57 @@
+{
+    "main-description": {
+        "main-specialization": "Programador Trainee / Jr. ",
+        "main-name": "Joaquín Godoy",
+        "main-role": "Desarrollador Backend, API"
+    },
+    "portfolio-project": {
+        "repo-name": "portfolio",
+        "project-description": "¡Hola! Échale un vistazo a mi portafolio. Encontrarás mis proyectos más recientes hasta el momento. Allons-y!",
+        "to-project": "ir a projecto...",
+        "project-last-update": "Última actualización:"
+    },
+    "movie-app-flask-project": {
+        "repo-name": "movie-app-flask",
+        "project-description": "Esta es una aplicación de películas que toma datos de la API. Estoy usando el framework Flask para la programación del backend. Para la visualización usé Bootstrap. La aplicación también incluye una funcionalidad de paginación personalizada.",
+        "to-project": "ir a projecto...",
+        "project-last-update": "Última actualización: "
+    },
+    "unconscious-game-project": {
+        "repo-name": "unconscious-game",
+        "project-description": "Divagar y hacer preguntas es la manera de descubrir pistas en el juego. Para explorar los lugares inconscientes de tu mente.",
+        "to-project": "ir a projecto...",
+        "project-last-update": "Última actualización: "
+    },
+    "ranking_app-project": {
+        "repo-name": "ranking_app-project",
+        "project-description": "Sistema de ranking que se comunica con los servicios principales de Fulbito5Manager, brinda un perfil de ranking individual para cada jugador.",
+        "to-project": "ir a projecto...",
+        "project-last-update": "Última actualización: "
+    },
+    "course-js": {
+        "course-title": "CURSO INTERMEDIO DE JAVASCRIPT ORIENTADO AL DISEÑO WEB",
+        "course-subtitle": "patrocinado por el Gobierno de Buenos Aires",
+        "course-date": "PROGRAMACIÓN ABR 2021 - JUL 2021",
+        "course-description": "El objetivo era crear y gestionar datos, así como darles funcionalidad a los programas y facilitar el uso de tareas complejas."
+    },
+    "course-py": {
+        "course-title": "CURSO INTERMEDIO DE PYTHON",
+        "course-subtitle": "patrocinado por el Gobierno de Buenos Aires",
+        "course-date": "PROGRAMACIÓN ABR 2021 - JUL 2021",
+        "course-description": "El objetivo era crear y gestionar datos, así como darles funcionalidad a los programas y facilitar el uso de tareas complejas."
+    },
+    "certificates": {
+        "certificates-title": "CERTIFICADOS DE CURSOS EN LÍNEA",
+        "certificates-1": "Diseño de Sitios Web con Bootstrap 4",
+        "certificates-2": "Introducción a HTML5",
+        "certificates-3": "Curso Inicial de GitHub",
+        "certificates-4": "Introducción a las Redes Sociales. Objetivos y Métricas.",
+        "certificates-5": "Certificado EF SET 72/100 (C2 Proficiente)"
+    },
+    "skills": {
+        "skills-title": "HABILIDADES"
+    },
+    "workflow-skills": {
+        "workflow-skills-title": "Conocimientos de flujo de trabajo"
+    }
+}

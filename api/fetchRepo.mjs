@@ -41,10 +41,8 @@ export async function getRepoList() {
     }
     // console.log(repos)
 
-    const enrichedRepos = await Promise.all(
-        repos
-        .filter(async (repo) => !repo.archived)
-        .map(async (repo) => {
+    const repoListExport = await Promise.all(
+        repos.map(async (repo) => {
             try {
                 const languagesResponse = await fetch(repo.languages_url, options);
 
@@ -68,7 +66,6 @@ export async function getRepoList() {
                     whenUpdated: repo.updated_at,
                     gituser: username,
                     languages: languagesData,
-                    archived: repo.archived
                 };
 
             } catch (err) {
@@ -76,9 +73,7 @@ export async function getRepoList() {
                 return null;
             }
         })
-    ).then((results) => results.filter(Boolean));
-
-    const repoListExport = enrichedRepos.filter(repo => !repo.archived);
+    ).then((results) => results.filter(Boolean));  
 
     return {
         repoList: repoListExport
